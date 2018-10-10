@@ -1,0 +1,908 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1.React简介 仅仅是UI许多人使用React作为MVC架构的V层。 尽管React并没有假设过你的其余技术栈， 但它仍可以作为一个小特征轻易地在已有项目中使用。 虚拟DOMReact为了更高超的性能而使用虚拟DOM作为其不同的实现。 它同时也可以由服务端Node.js渲染 － 而不需要过重的浏览器DOM支持。组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，组件的HTML结构">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React简介与应用实践">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/React简介与应用实践/index.html">
+<meta property="og:site_name" content="暖色调">
+<meta property="og:description" content="1.React简介 仅仅是UI许多人使用React作为MVC架构的V层。 尽管React并没有假设过你的其余技术栈， 但它仍可以作为一个小特征轻易地在已有项目中使用。 虚拟DOMReact为了更高超的性能而使用虚拟DOM作为其不同的实现。 它同时也可以由服务端Node.js渲染 － 而不需要过重的浏览器DOM支持。组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，组件的HTML结构">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i2.piimg.com/567571/c4e3dcdaad7d57d4.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/0ae00402bb09bd31.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/e0c1ced25847ed95.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/7f1063597804f119.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/6d47149125c5fd49.png">
+<meta property="og:updated_time" content="2018-10-10T03:24:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React简介与应用实践">
+<meta name="twitter:description" content="1.React简介 仅仅是UI许多人使用React作为MVC架构的V层。 尽管React并没有假设过你的其余技术栈， 但它仍可以作为一个小特征轻易地在已有项目中使用。 虚拟DOMReact为了更高超的性能而使用虚拟DOM作为其不同的实现。 它同时也可以由服务端Node.js渲染 － 而不需要过重的浏览器DOM支持。组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，组件的HTML结构">
+<meta name="twitter:image" content="http://i2.piimg.com/567571/c4e3dcdaad7d57d4.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/React简介与应用实践/"/>
+
+  <title> React简介与应用实践 | 暖色调 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">暖色调</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Every little helps</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React简介与应用实践
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-10T11:24:16+08:00" content="2018-10-10">
+              2018-10-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/框架应用/" itemprop="url" rel="index">
+                    <span itemprop="name">框架应用</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/10/10/React简介与应用实践/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/10/React简介与应用实践/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-React简介"><a href="#1-React简介" class="headerlink" title="1.React简介"></a>1.React简介</h1><ul>
+<li>仅仅是UI<br>许多人使用React作为MVC架构的V层。 尽管React并没有假设过你的其余技术栈， 但它仍可以作为一个小特征轻易地在已有项目中使用。</li>
+<li>虚拟DOM<br>React为了更高超的性能而使用虚拟DOM作为其不同的实现。 它同时也可以由服务端Node.js渲染 － 而不需要过重的浏览器DOM支持。<br>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，组件的HTML结构并不会直接生成DOM，而是映射生成虚拟的JavaScript DOM结构，React又通过在这个虚拟DOM上实现了一个 diff 算法找出最小变更，再把这些变更写入实际的DOM中。这个虚拟DOM以JS结构的形式存在，计算性能会比较好，而且由于减少了实际DOM操作次数，性能会有较大提升。</li>
+<li>数据流<br>React实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。<br>React中文文档链接<a href="http://reactjs.cn/react/index.html" target="_blank" rel="noopener">http://reactjs.cn/react/index.html</a></li>
+</ul>
+<h1 id="2-为什么使用React"><a href="#2-为什么使用React" class="headerlink" title="2.为什么使用React"></a>2.为什么使用React<br></h1><p>React是一个 Facebook 和 Instagram 用来创建用户界面的 JavaScript 库。很多人认为 React 是 MVC 中的 V（视图）。我们创造 React 是为了解决一个问题：<strong>构建随着时间数据不断变化的大规模应用程序。</strong>为了达到这个目标，React 采用下面两个主要的思想。</p>
+<ul>
+<li>简单<br>仅仅只要表达出你的应用程序在任一个时间点应该长的样子，然后当底层的数据变了，React 会自动处理所有用户界面的更新。</li>
+<li>声明式<br>数据变化后，React 概念上与点击“刷新”按钮类似，但仅会更新变化的部分。</li>
+</ul>
+<h1 id="3-数据呈现"><a href="#3-数据呈现" class="headerlink" title="3.数据呈现"></a>3.数据呈现</h1><p>用户界面能做的最基础的事就是呈现一些数据。React 让显示数据变得简单，当数据变化时，用户界面会自动同步更新。</p>
+<p><strong>快速开始</strong></p>
+<p>新建一个名为 hello-react.html 的文件，内容如下<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello React<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://fb.me/react-0.14.7.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://fb.me/JSXTransformer-0.14.7.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/jsx"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> HelloWorld = React.createClass(&#123;</span></span><br><span class="line"><span class="javascript">      render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> (</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">            Hello,<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"Your name here"</span> /&gt;</span>!</span></span><br><span class="line"><span class="javascript">            It is &#123;<span class="keyword">this</span>.props.date.toTimeString()&#125;</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="undefined">        );</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      React.render(</span></span><br><span class="line"><span class="javascript">        &lt;HelloWorld date=&#123;<span class="keyword">new</span> <span class="built_in">Date</span>()&#125; /&gt;,</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)</span></span><br><span class="line"><span class="undefined">      );</span></span><br><span class="line"><span class="undefined">    &#125;, 500);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>ReactJs是基于组件化的开发，所以最终你的页面应该是由若干个小组件组成的大组件。</li>
+<li>可以通过属性，将值传递到组件内部，同理也可以通过属性将内部的结果传递到父级组件；要对某些值的变化做DOM操作的，要把这些值放到state中。</li>
+<li><p>为组件添加外部css样式时，类名应该写成className而不是class;添加内部样式时</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">style=&#123;&#123;<span class="attr">opacity</span>: <span class="keyword">this</span>.state.opacity&#125;&#125;; <span class="comment">//正确</span></span><br><span class="line">style=<span class="string">"opacity:&#123;this.state.opacity&#125;;"</span>  <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组件名称首字母必须大写。</p>
+</li>
+<li>变量名用<code>{}</code>包裹，且不能加双引号。</li>
+</ul>
+<p><strong>响应式更新(Reactive Updates)</strong></p>
+<p>在浏览器中打开 hello-react.html ，在输入框输入你的名字。你会发现 React 在用户界面中只改变了时间，你在输入框的输入内容会保留着，即使你没有写任何代码来完成这个功能。React 也为你解决了这个问题，做了正确的事。</p>
+<p>我们想到的解决方案是React 是不会去操作 DOM 的，除非不得不操作 DOM 。它用一种更快的内置仿造的 DOM 来操作差异，为你计算出效率最高的 DOM 改变。</p>
+<p>这个组件的输入被称为 props - “properties”的缩写。它们通过 JSX 语法进行参数传递。你必须知道，在组件里这些属性是不可直接改变的，也就是说 this.props 是只读的。</p>
+<p><strong>组件就像是函数</strong></p>
+<p>React 组件非常简单。你可以认为它们就是简单的函数，接受 props 和 state 作为参数，然后渲染出 HTML。正是由于它们如此简单，使得它们非常容易理解。</p>
+<h1 id="4-富交互性的动态用户界面"><a href="#4-富交互性的动态用户界面" class="headerlink" title="4.富交互性的动态用户界面"></a>4.富交互性的动态用户界面</h1><p><strong>简单例子</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> LikeButton = React.createClass(&#123;</span><br><span class="line">  getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="attr">liked</span>: <span class="literal">false</span>&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  handleClick: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">liked</span>: !<span class="keyword">this</span>.state.liked&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> text = <span class="keyword">this</span>.state.liked? <span class="string">'like'</span>: <span class="string">'haven\'t liked'</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;p onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt;</span><br><span class="line">        You &#123;text&#125; <span class="keyword">this</span>. Click to toggle.</span><br><span class="line">      &lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br><span class="line"><span class="regexp">React.render(</span></span><br><span class="line"><span class="regexp">  &lt;LikeButton /</span>&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p><strong>事件处理与合成事件(Synthetic Events)</strong></p>
+<p>React 里只需把事件处理器（event handler）以骆峰命名（camelCased）形式当作组件的 props 传入即可，就像使用普通 HTML 那样。React 内部创建一套合成事件系统来使所有事件在 IE8 和以上浏览器表现一致。也就是说，React 知道如何冒泡和捕获事件，而且你的事件处理器接收到的 events 参数与 W3C 规范一致，无论你使用哪种浏览器。</p>
+<p>如果需要在手机或平板等触摸设备上使用 React，需要调用React.initializeTouchEvents(true); 启用触摸事件处理。</p>
+<p><strong>幕后原理</strong></p>
+<p>在幕后，React 做了一些操作来让代码高效运行且易于理解。</p>
+<p><strong>Autobinding:</strong> 在 JavaScript 里创建回调的时候，为了保证 this 的正确性，一般都需要显式地绑定方法到它的实例上。有了 React，所有方法被自动绑定到了它的组件实例上。React 还缓存这些绑定方法，所以 CPU 和内存都是非常高效。而且还能减少打字！</p>
+<p><strong>事件代理 ：</strong> React 实际并没有把事件处理器绑定到节点本身。当 React 启动的时候，它在最外层使用唯一一个事件监听器处理所有事件。当组件被加载和卸载时，只是在内部映射里添加或删除事件处理器。当事件触发，React 根据映射来决定如何分发。当映射里处理器时，会当作空操作处理。</p>
+<p><strong>组件其实是状态机(State Machines)</strong><br>React 把用户界面当作简单状态机。把用户界面想象成拥有不同状态然后渲染这些状态，可以轻松让用户界面和数据保持一致。</p>
+<p>React 里，只需更新组件的 state，然后根据新的 state 重新渲染用户界面（不要操作 DOM）。React 来决定如何最高效地更新 DOM。</p>
+<p><strong>State工作原理</strong></p>
+<p>常用的通知 React 数据变化的方法是调用 setState(data, callback)。这个方法会合并（merge） data 到 this.state，并重新渲染组件。渲染完成后，调用可选的 callback回调。大部分情况下不需要提供 callback，因为 React 会负责把界面更新到最新状态。</p>
+<h1 id="5-应用实例"><a href="#5-应用实例" class="headerlink" title="5.应用实例"></a>5.应用实例</h1><p>以安信农业保险管理系统保单列表为例：(当前农保系统框架重构工作已全部完成)<br><img src="http://i2.piimg.com/567571/c4e3dcdaad7d57d4.png" alt=""></p>
+<p><strong>源码分析</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">   <span class="keyword">let</span> handler4policy = &#123;</span><br><span class="line">       handlerArrow: <span class="keyword">this</span>.handlerArrow.bind(<span class="keyword">this</span>),</span><br><span class="line">       handler4bd: &#123;</span><br><span class="line">           handlerFolder: <span class="keyword">this</span>.handlerFolder.bind(<span class="keyword">this</span>),</span><br><span class="line">           handler4land: &#123;</span><br><span class="line">               deleteLand: <span class="keyword">this</span>.deleteLand.bind(<span class="keyword">this</span>)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> (</span><br><span class="line">       &lt;div className=<span class="string">"item-wrap"</span> style=&#123;<span class="keyword">this</span>.props.css&#125;&gt;</span><br><span class="line">           &lt;div className=<span class="string">"item-search-wrap"</span>&gt;</span><br><span class="line">               &lt;input type=<span class="string">"text"</span> className=<span class="string">'item-search-input'</span> ref=<span class="string">'search'</span> value=&#123;<span class="keyword">this</span>.state.search&#125; placeholder=<span class="string">"编号/证件号/姓名/电话"</span> onChange=&#123;<span class="keyword">this</span>.handlerInputChange.bind(<span class="keyword">this</span>)&#125; onKeyDown=&#123;<span class="keyword">this</span>.handlerKeyDown.bind(<span class="keyword">this</span>)&#125;/&gt;</span><br><span class="line">               &lt;div className=<span class="string">"item-search-btn"</span> onClick=&#123;<span class="keyword">this</span>.searchItem.bind(<span class="keyword">this</span>)&#125;&gt;</span><br><span class="line">                   &lt;img className=<span class="string">"item-search-logo"</span> src=<span class="string">"img/search.png"</span> /&gt;</span><br><span class="line">               &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">           &lt;/</span>div&gt;</span><br><span class="line">           &lt;div className=<span class="string">"policy-add-btn"</span> title=<span class="string">"新建保单"</span> onClick=&#123;<span class="keyword">this</span>.handlerNewPolicy.bind(<span class="keyword">this</span>)&#125;&gt;</span><br><span class="line">               &lt;img className=<span class="string">"item-insert-logo"</span> src=<span class="string">"img/add_2.png"</span> /&gt;</span><br><span class="line">               &lt;span className=<span class="string">"item-insert-txt"</span>&gt;新建保单&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">           &lt;/</span>div&gt;</span><br><span class="line">           &lt;div className=<span class="string">"item-contain"</span>&gt;</span><br><span class="line">               &lt;ul className = <span class="string">"item-ul"</span>&gt;</span><br><span class="line">                   &#123;<span class="keyword">this</span>.state.items.map(<span class="function">(<span class="params">item, idx</span>) =&gt;</span> &#123;</span><br><span class="line">                       <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">PolicyMod</span> <span class="attr">key</span> = <span class="string">&#123;item.policy.CODING&#125;</span> &#123;<span class="attr">...this.config</span>&#125; &#123;<span class="attr">...item</span>&#125; &#123;<span class="attr">...handler4policy</span>&#125; <span class="attr">index</span> = <span class="string">&#123;idx&#125;</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">                   &#125;)&#125;</span></span><br><span class="line"><span class="xml">               <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line">           &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">       &lt;/</span>div&gt;</span><br><span class="line">   );</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>保单搜索</strong></p>
+<p>通过点击保单查询图标或输入框的Enter键盘事件触发SearchItem函数接受查询信息，进而以查询信息作为关键字调用农保保单查询接口获取保单列表的JSON数据，预处理数据后通过调用React框架的setState函数更新状态机完成列表的刷新操作，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">handlerKeyDown(event) &#123;</span><br><span class="line">  <span class="keyword">let</span> [target = event.target] = [event.srcElement];</span><br><span class="line">  <span class="keyword">if</span>(event.keyCode === <span class="number">13</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.search(target.value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">searchItem(event) &#123;</span><br><span class="line">  <span class="keyword">this</span>.search(<span class="keyword">this</span>.refs.search.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">search(val) &#123;</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;<span class="attr">search</span>: <span class="string">''</span>&#125;);</span><br><span class="line">  connect.fuzzyQuery(val, json =&gt; &#123;</span><br><span class="line">      <span class="keyword">this</span>.refreshList(json);</span><br><span class="line">      <span class="keyword">if</span>(json.length &gt; <span class="number">0</span> &amp;&amp; json[<span class="number">0</span>].bdArr.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">let</span> bdxq = json[<span class="number">0</span>].bdArr[<span class="number">0</span>].bdxq;</span><br><span class="line">          <span class="built_in">Map</span>.map.zoomTo(<span class="built_in">parseFloat</span>(bdxq[<span class="string">'X'</span>]), <span class="built_in">parseFloat</span>(bdxq[<span class="string">'Y'</span>]), &#123; <span class="string">'zl'</span>: <span class="number">1</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里this.state.items为保单列表展示所提供的数据(JSON数据格式)，一些可能改变列表内容的交互行为最终表现为改变该组件的state值(即组件的当前状态)即可达到轻松渲染页面的效果。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">refreshList(json, fid) &#123;</span><br><span class="line">  <span class="keyword">this</span>.pretreat(json, fid);</span><br><span class="line">  <span class="built_in">Map</span>.getVectorLandData();</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: json&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pretreat(items, fid) &#123;</span><br><span class="line">  <span class="built_in">Map</span>.curListBdArr = [];</span><br><span class="line">  <span class="built_in">Map</span>.exceptFIDArr = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> item = items[i];</span><br><span class="line">      item.isOpen = <span class="keyword">this</span>.config.defaultOpen;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; item.bdArr.length; j++) &#123;</span><br><span class="line">          <span class="keyword">let</span> bd = item.bdArr[j];</span><br><span class="line">          bd.isOpen = <span class="keyword">this</span>.config.defaultOpen;</span><br><span class="line">          <span class="built_in">Map</span>.curListBdArr.push(bd.bdxq.ID);</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">let</span> z = <span class="number">0</span>; z &lt; bd.landArr.length; z++) &#123;</span><br><span class="line">              <span class="keyword">let</span> land = bd.landArr[z];</span><br><span class="line">              land.highlight = <span class="literal">false</span>;</span><br><span class="line">              <span class="keyword">if</span>(fid &amp;&amp; land.FID === fid) &#123;</span><br><span class="line">                  land.highlight = <span class="literal">true</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">let</span> cp = <span class="keyword">this</span>._calCenterPoint(land.XMIN, land.XMAX, land.YMIN, land.YMAX);</span><br><span class="line">              land.centerPoint = <span class="string">`<span class="subst">$&#123;cp.x&#125;</span>,<span class="subst">$&#123;cp.y&#125;</span>`</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>保单操作</strong><br><img src="http://i2.piimg.com/567571/0ae00402bb09bd31.png" alt=""><br><img src="http://i2.piimg.com/567571/e0c1ced25847ed95.png" alt=""></p>
+<p>当通过点击对话框中相应的事件完成对保单的添加、更新以及删除操作的响应时，利用获取到的事件调用列表组件的保单事件接受函数完成相应的业务操作并更新数据库，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">alterPolicy_ex(type, detail) &#123;</span><br><span class="line">  <span class="keyword">const</span> plTAB = config.policyTab;</span><br><span class="line">  <span class="keyword">this</span>._handlerDateForm(detail);</span><br><span class="line">  <span class="keyword">let</span> params = &#123;<span class="attr">Fields</span>: [], <span class="attr">Data</span>: [[]]&#125;;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(detail)) &#123;</span><br><span class="line">      <span class="keyword">if</span>(key === <span class="string">'CODING'</span>) &#123;</span><br><span class="line">          params.Fields.unshift(key);</span><br><span class="line">          params.Data[<span class="number">0</span>].unshift(detail[key]);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      params.Fields.push(key);</span><br><span class="line">      params.Data[<span class="number">0</span>].push(detail[key]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(type === <span class="string">'INSERT'</span>) &#123;</span><br><span class="line">      detail.USRID = sessionStorage.getItem(<span class="string">'usrName'</span>);</span><br><span class="line">      detail.AREA = <span class="number">0</span>;</span><br><span class="line">      params.Fields.push(<span class="string">'USRID'</span>, <span class="string">'AREA'</span>);</span><br><span class="line">      params.Data[<span class="number">0</span>].push(detail.USRID, detail.AREA);</span><br><span class="line">      <span class="keyword">let</span> plJson = &#123; <span class="attr">policy</span>: detail, <span class="attr">bdArr</span>: [], <span class="attr">isOpen</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">      <span class="keyword">this</span>.state.items.push(plJson);</span><br><span class="line">      toolUtil.recordAdd(config.dbName, plTAB, params, () =&gt; &#123;</span><br><span class="line">          toolUtil.newalertDiv(<span class="string">'添加成功'</span>);</span><br><span class="line">          <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: <span class="keyword">this</span>.state.items&#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.state.items.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (item.policy.CODING === detail.CODING) &#123;</span><br><span class="line">              item.policy = detail;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      toolUtil.recordUpdate(config.dbName, plTAB, params, () =&gt; &#123;</span><br><span class="line">          toolUtil.newalertDiv(<span class="string">'保存成功'</span>);</span><br><span class="line">          <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: <span class="keyword">this</span>.state.items&#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">deletePolicy_ex(coding) &#123;</span><br><span class="line">  <span class="keyword">let</span> curInsFeas = <span class="built_in">Map</span>.curWindowInsureFeas;</span><br><span class="line">  <span class="built_in">Map</span>.curWindowInsureFeas = curInsFeas.filter(<span class="function"><span class="params">fea</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (fea.fields.CODING == coding) <span class="built_in">Map</span>.insure_Featurelayer.removeFeature(fea);</span><br><span class="line">      <span class="keyword">return</span> (fea.fields.CODING != coding);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.state.items = <span class="keyword">this</span>.state.items.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.policy.CODING !== coding);</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: <span class="keyword">this</span>.state.items&#125;);</span><br><span class="line">  connect.deletePolicyByCoding(coding, () =&gt; &#123;</span><br><span class="line">      toolUtil.newalertDiv(<span class="string">'删除成功'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同样的，在处理不同的事件操作过程中通过改变组件的state值(这里是state.items)，添加时push一条记录、更新替换一条记录、以及删除时剔除一条记录的方式，统一更改state值，再一次调用setState函数完成保单列表的刷新工作，渲染保单。最后根据不同的需求增删改操作数据库，完成保单的操作任务。</p>
+<p><strong>标的操作</strong><br><img src="http://i2.piimg.com/567571/7f1063597804f119.png" alt=""><br><img src="http://i2.piimg.com/567571/6d47149125c5fd49.png" alt=""></p>
+<p>在完成对标的的添加、更新以及删除操作时，利用获取到的事件调用列表组件的标的事件接受函数完成相应的业务操作并更新数据库，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">alterBd_ex(type, detail, point) &#123;</span><br><span class="line">  <span class="keyword">const</span> bdTAB = config.bdTab;</span><br><span class="line">  <span class="keyword">let</span> params = &#123;<span class="attr">Fields</span>: [], <span class="attr">Data</span>: [[]]&#125;;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(detail)) &#123;</span><br><span class="line">      <span class="keyword">if</span>(key === <span class="string">'ID'</span>) &#123;</span><br><span class="line">          params.Fields.unshift(key);</span><br><span class="line">          params.Data[<span class="number">0</span>].unshift(detail[key]);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      params.Fields.push(key);</span><br><span class="line">      params.Data[<span class="number">0</span>].push(detail[key]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(type === <span class="string">'INSERT'</span>) &#123;</span><br><span class="line">      detail.AREA = <span class="number">0</span>;</span><br><span class="line">      params.Fields.push(<span class="string">'AREA'</span>);</span><br><span class="line">      params.Data[<span class="number">0</span>].push(detail.AREA);</span><br><span class="line">      <span class="keyword">let</span> bdJson = &#123; <span class="attr">bdxq</span>: detail, <span class="attr">landArr</span>: [], <span class="attr">isOpen</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">      <span class="keyword">this</span>.state.items.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (item.policy.CODING === detail.CODING) &#123;</span><br><span class="line">              item.bdArr.push(bdJson);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      toolUtil.recordAdd(config.dbName, bdTAB, params, () =&gt; &#123;</span><br><span class="line">          toolUtil.newalertDiv(<span class="string">'添加成功'</span>);</span><br><span class="line">          <span class="built_in">Map</span>.map.zoomTo(<span class="built_in">parseFloat</span>(point.X), <span class="built_in">parseFloat</span>(point.Y), &#123; <span class="attr">zl</span>: <span class="number">1</span> &#125;);</span><br><span class="line">          <span class="keyword">let</span> SQL = &#123; <span class="string">'fields'</span>: <span class="string">'max(ID)'</span>, <span class="string">'lyr'</span>: bdTAB, <span class="string">'filter'</span>: <span class="string">''</span> &#125;;</span><br><span class="line">          toolUtil.recordQuery(config.dbName, SQL, msg =&gt; &#123;</span><br><span class="line">              bdJson.bdxq.ID = msg[<span class="number">0</span>][<span class="string">'max(ID)'</span>];</span><br><span class="line">              <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: <span class="keyword">this</span>.state.items&#125;);</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.state.items.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (item.policy.CODING === detail.CODING) &#123;</span><br><span class="line">              <span class="keyword">let</span> bdArr = item.bdArr;</span><br><span class="line">              bdArr.forEach(<span class="function"><span class="params">bd</span> =&gt;</span> &#123;</span><br><span class="line">                  <span class="keyword">if</span>(bd.bdxq.ID === detail.ID) &#123;</span><br><span class="line">                      bd.bdxq = detail;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      toolUtil.recordUpdate(config.dbName, bdTAB, params, () =&gt; &#123;</span><br><span class="line">          toolUtil.newalertDiv(<span class="string">'保存成功'</span>);</span><br><span class="line">          <span class="built_in">Map</span>.map.zoomTo(<span class="built_in">parseFloat</span>(point.X), <span class="built_in">parseFloat</span>(point.Y), &#123; <span class="attr">zl</span>: <span class="number">1</span> &#125;);</span><br><span class="line">          <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: <span class="keyword">this</span>.state.items&#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同保单操作，在处理不同的事件操作过程中依然通过改变组件的state值，调用setState函数完成保单列表的刷新工作。最后根据不同的需求增删改操作数据库，完成标的的操作任务。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">deleteBd_ex(coding, bdid, area) &#123;</span><br><span class="line">  <span class="keyword">let</span> curInsFeas = <span class="built_in">Map</span>.curWindowInsureFeas;</span><br><span class="line">  <span class="built_in">Map</span>.curWindowInsureFeas = curInsFeas.filter(<span class="function"><span class="params">fea</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (fea.fields.BDID === bdid) <span class="built_in">Map</span>.insure_Featurelayer.removeFeature(fea);</span><br><span class="line">      <span class="keyword">return</span> (fea.fields.BDID !== bdid);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.state.items.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (item.policy.CODING == coding) &#123;</span><br><span class="line">          item.bdArr = item.bdArr.filter(<span class="function"><span class="params">bd</span> =&gt;</span> bd.bdxq.ID !== bdid);</span><br><span class="line">          item.policy.AREA = (<span class="built_in">parseFloat</span>(item.policy.AREA) - area).toFixed(<span class="number">2</span>);</span><br><span class="line">          connect.updateArea4Policy(coding, item.policy.AREA);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: <span class="keyword">this</span>.state.items&#125;);</span><br><span class="line">  connect.deleteBdById(bdid, () =&gt; &#123;</span><br><span class="line">      toolUtil.newalertDiv(<span class="string">'删除成功'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>地块操作</strong></p>
+<p>1.添加地块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">insertLand_ex(selectedfea) &#123;</span><br><span class="line">  <span class="keyword">let</span> [fields, params, land = &#123;<span class="attr">BDID</span>: curbdid, <span class="attr">CODING</span>: curcoding&#125;] = [selectedfea.fields, &#123;<span class="attr">Fields</span>: landRelFields, <span class="attr">Data</span>: [[]]&#125;];</span><br><span class="line">  landRelFields.forEach(<span class="function">(<span class="params">fid</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(fields[fid]) &#123;</span><br><span class="line">          land[fid] = fields[fid];</span><br><span class="line">          params.Data[<span class="number">0</span>].push(fields[fid]);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          fid === <span class="string">'BDID'</span> &amp;&amp; params.Data[<span class="number">0</span>].push(curbdid);</span><br><span class="line">          fid === <span class="string">'CODING'</span> &amp;&amp; params.Data[<span class="number">0</span>].push(curcoding);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">let</span> cp = <span class="keyword">this</span>._calCenterPoint(land.XMIN, land.XMAX, land.YMIN, land.YMAX);</span><br><span class="line">  land.centerPoint = <span class="string">`<span class="subst">$&#123;cp.x&#125;</span>,<span class="subst">$&#123;cp.y&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">  selectedfea.addFields(&#123;<span class="string">'BDID'</span>: curbdid, <span class="string">'CODING'</span>: curcoding&#125;);</span><br><span class="line">  <span class="built_in">Map</span>.curWindowInsureFeas.push(selectedfea);</span><br><span class="line">  <span class="built_in">Map</span>.curWindowInsureFeas.forEach(<span class="function"><span class="params">fea</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(fea.fields.BDID == curbdid) &#123;</span><br><span class="line">          <span class="built_in">Map</span>.insure_Featurelayer.addFeature(fea);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">if</span>(!toolUtil.isInArr(curbdid, <span class="built_in">Map</span>.curListBdArr)) &#123;</span><br><span class="line">      <span class="built_in">Map</span>.curListBdArr.push(curbdid);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> area = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.state.items.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (item.policy.CODING === curcoding) &#123;</span><br><span class="line">          <span class="keyword">let</span> bdArr = item.bdArr;</span><br><span class="line">          bdArr.forEach(<span class="function">(<span class="params">bd</span>) =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">if</span> (bd.bdxq.ID === curbdid) &#123;</span><br><span class="line">                  bd.isOpen = <span class="literal">true</span>;</span><br><span class="line">                  bd.landArr.push(land);</span><br><span class="line">                  area = <span class="built_in">parseFloat</span>(land.SHPAREA) / <span class="number">666.67</span>;</span><br><span class="line">                  bd.bdxq.AREA = (<span class="built_in">parseFloat</span>(bd.bdxq.AREA) + area).toFixed(<span class="number">2</span>);</span><br><span class="line">                  connect.updateArea4Bd(bd.bdxq.ID, bd.bdxq.AREA);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">          item.policy.AREA = (<span class="built_in">parseFloat</span>(item.policy.AREA) + area).toFixed(<span class="number">2</span>);</span><br><span class="line">          connect.updateArea4Policy(item.policy.CODING, item.policy.AREA);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: <span class="keyword">this</span>.state.items&#125;);</span><br><span class="line">  toolUtil.recordAdd(config.dbName, config.landRelTab, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.删除地块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">deleteLand(fid, bdid, coding) &#123;</span><br><span class="line">  <span class="keyword">let</span> area = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">Map</span>.curWindowInsureFeas = <span class="built_in">Map</span>.curWindowInsureFeas.filter(<span class="function"><span class="params">fea</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (fea.fields.FID === fid) <span class="built_in">Map</span>.insure_Featurelayer.removeFeature(fea);</span><br><span class="line">      <span class="keyword">return</span> (fea.fields.FID !== fid);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.state.items.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (item.policy.CODING === coding) &#123;</span><br><span class="line">          <span class="keyword">let</span> bdArr = item.bdArr;</span><br><span class="line">          bdArr.forEach(<span class="function">(<span class="params">bd</span>) =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">if</span> (bd.bdxq.ID === bdid) &#123;</span><br><span class="line">                  bd.landArr = bd.landArr.filter(<span class="function"><span class="params">land</span> =&gt;</span> &#123;</span><br><span class="line">                      <span class="keyword">if</span> (land.FID === fid) area = <span class="built_in">parseFloat</span>(land.SHPAREA) / <span class="number">666.67</span>;</span><br><span class="line">                      <span class="keyword">return</span> land.FID !== fid;</span><br><span class="line">                  &#125;);</span><br><span class="line">                  bd.bdxq.AREA = (<span class="built_in">parseFloat</span>(bd.bdxq.AREA) - area).toFixed(<span class="number">2</span>);</span><br><span class="line">                  connect.updateArea4Bd(bd.bdxq.ID, bd.bdxq.AREA);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">          item.policy.AREA = (<span class="built_in">parseFloat</span>(item.policy.AREA) - area).toFixed(<span class="number">2</span>);</span><br><span class="line">          connect.updateArea4Policy(item.policy.CODING, item.policy.AREA);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: <span class="keyword">this</span>.state.items&#125;);</span><br><span class="line">  <span class="keyword">let</span> params = &#123;</span><br><span class="line">      <span class="string">'Fields'</span>: <span class="string">'FID'</span>,</span><br><span class="line">      <span class="string">'Data'</span>: [fid]</span><br><span class="line">  &#125;;</span><br><span class="line">  toolUtil.recordDelete(config.dbName, config.landRelTab, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>地块操作任务需要记录点选地块的要素信息(包括空间、属性信息)或地块的FID，在地图上高亮显示点选的保险地块后调用列表组件的接收函数将该要素信息添加到state中，或在state中剔除，更新组件state完成地块的添加或删除操作。最后更新数据库完成录入工作。</p>
+<h1 id="6-与其他框架的比较"><a href="#6-与其他框架的比较" class="headerlink" title="6.与其他框架的比较"></a>6.与其他框架的比较</h1><h2 id="React与Angular"><a href="#React与Angular" class="headerlink" title="React与Angular"></a>React与Angular</h2><ul>
+<li>Reactjs作为view本身非常独立，不仅可以在浏览器上用，还可以在server端结合nodejs做模板。</li>
+<li>除了独立，Reactjs还很灵活小巧，用起来像拼lego的积木，一个component接着另一个component。</li>
+<li><p>在性能方面，由于运用了virtual dom技术，Reactjs只在调用setstate的时候会更新dom，而且还是先更新virtual dom，然后和实际dom比较，最后再更新实际dom。这个过程比起angularjs, knockoutjs的bind方式来说，一是更新dom的次数少，二是更新dom的内容少，速度肯定是快了的。另外Reactjs用了jsx，这个相当于半个新语言了。</p>
+</li>
+<li><p>angularjs是一个m-v-whateever framework。framework的一个特点就是很全面，除了m-v-whatever面面俱到，它还自带了很多$开头的service，$http, $route, $q(defer),$cookie等等。 </p>
+</li>
+<li>angularjs的架构清晰，分工明确，整个框架充满了DI的思路，耦合性非常低，对象都是被inject的，也就是说每个对象都可以轻易被替换而不影响其他对象。</li>
+</ul>
+<h2 id="React与Polymer"><a href="#React与Polymer" class="headerlink" title="React与Polymer"></a>React与Polymer</h2><p>Polymer沿袭了正统的HTML+CSS+JS思路进行革新，很多组件化的功能靠浏览器自身的功能去支持，用浏览器原生的接口去做组件的集成，使用了效率最高的Vanilla JS ，易学易用。但是在兼容性方面不如React，React利用jsx集合Babel转码工具等，较好的解决了兼容性问题支持ie8及以上。</p>
+<h2 id="React与jQuery"><a href="#React与jQuery" class="headerlink" title="React与jQuery"></a>React与jQuery</h2><p>jQuery的思路是以dom为中心，所以的操作都在围绕着dom的变化来操作。也就是jQuery的核心思想是dom可变。</p>
+<p>React认为页面dom不可变，所以当状态和属性发生变化时会re-render dom。React会根据新的状态和属性生成新的VirtualDOM Tree然后和旧的VirtualDOM Tree做对比(类似于版本控制的机制)。通过对比计算出最小的更新代价，然后将这些更新的方法进入队列。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag">#React</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/Polymer介绍/" rel="next" title="Polymer介绍">
+                <i class="fa fa-chevron-left"></i> Polymer介绍
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/10/ccgis移动版/" rel="prev" title="ccgis移动版">
+                ccgis移动版 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/10/10/React简介与应用实践/"
+           data-title="React简介与应用实践" data-url="http://yoursite.com/2018/10/10/React简介与应用实践/">
+      </div>
+    
+  </div>
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/hsd.jpg"
+               alt="Leo_婷子酱" />
+          <p class="site-author-name" itemprop="name">Leo_婷子酱</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jttry" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-React简介"><span class="nav-number">1.</span> <span class="nav-text">1.React简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-为什么使用React"><span class="nav-number">2.</span> <span class="nav-text">2.为什么使用React</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-数据呈现"><span class="nav-number">3.</span> <span class="nav-text">3.数据呈现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-富交互性的动态用户界面"><span class="nav-number">4.</span> <span class="nav-text">4.富交互性的动态用户界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-应用实例"><span class="nav-number">5.</span> <span class="nav-text">5.应用实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-与其他框架的比较"><span class="nav-number">6.</span> <span class="nav-text">6.与其他框架的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#React与Angular"><span class="nav-number">6.1.</span> <span class="nav-text">React与Angular</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React与Polymer"><span class="nav-number">6.2.</span> <span class="nav-text">React与Polymer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React与jQuery"><span class="nav-number">6.3.</span> <span class="nav-text">React与jQuery</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo_婷子酱</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jttry"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

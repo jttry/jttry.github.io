@@ -1,0 +1,874 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,mobile," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1.系统设计简介对地图工作空间的管理及展示、发表评论、点赞，能够集成第三方地图、定位、拍照及上传照片、记录路线轨迹，提供了用户信息管理功能，实现了全国空气质量图表展示专题模块。网址：https://ccgis.cn/mapb/mobile/home/ 功能设计系统分为以下五个功能模块，分别是首页、地图数据管理、地图模块、属性数据管理、用户信息管理，如图所示。 代码文件组织在mobile文件夹下包含">
+<meta name="keywords" content="javascript,mobile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ccgis移动版">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/ccgis移动版/index.html">
+<meta property="og:site_name" content="暖色调">
+<meta property="og:description" content="1.系统设计简介对地图工作空间的管理及展示、发表评论、点赞，能够集成第三方地图、定位、拍照及上传照片、记录路线轨迹，提供了用户信息管理功能，实现了全国空气质量图表展示专题模块。网址：https://ccgis.cn/mapb/mobile/home/ 功能设计系统分为以下五个功能模块，分别是首页、地图数据管理、地图模块、属性数据管理、用户信息管理，如图所示。 代码文件组织在mobile文件夹下包含">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i4.piimg.com/567571/393cadbc34024884.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/6d25c1f00a3ce09e.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/a8f24b21fb87db9d.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/e07a00837c1f0786.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/1160660fcecab6f1.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/e0a41a2547baa7cf.jpg">
+<meta property="og:image" content="http://i1.piimg.com/567571/286e3300f966c9a8.jpg">
+<meta property="og:image" content="http://i1.piimg.com/567571/7b079be8cd6be723.jpg">
+<meta property="og:image" content="http://i1.piimg.com/567571/064c6133f85036d9.jpg">
+<meta property="og:image" content="http://i1.piimg.com/567571/5a7d157b99f11f5a.jpg">
+<meta property="og:updated_time" content="2018-10-10T03:24:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ccgis移动版">
+<meta name="twitter:description" content="1.系统设计简介对地图工作空间的管理及展示、发表评论、点赞，能够集成第三方地图、定位、拍照及上传照片、记录路线轨迹，提供了用户信息管理功能，实现了全国空气质量图表展示专题模块。网址：https://ccgis.cn/mapb/mobile/home/ 功能设计系统分为以下五个功能模块，分别是首页、地图数据管理、地图模块、属性数据管理、用户信息管理，如图所示。 代码文件组织在mobile文件夹下包含">
+<meta name="twitter:image" content="http://i4.piimg.com/567571/393cadbc34024884.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/ccgis移动版/"/>
+
+  <title> ccgis移动版 | 暖色调 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">暖色调</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Every little helps</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ccgis移动版
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-10T11:24:18+08:00" content="2018-10-10">
+              2018-10-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/10/10/ccgis移动版/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/10/ccgis移动版/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-系统设计"><a href="#1-系统设计" class="headerlink" title="1.系统设计"></a>1.系统设计</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>对地图工作空间的管理及展示、发表评论、点赞，能够集成第三方地图、定位、拍照及上传照片、记录路线轨迹，提供了用户信息管理功能，实现了全国空气质量图表展示专题模块。<br>网址：<a href="https://ccgis.cn/mapb/mobile/home/" target="_blank" rel="noopener">https://ccgis.cn/mapb/mobile/home/</a></p>
+<h2 id="功能设计"><a href="#功能设计" class="headerlink" title="功能设计"></a>功能设计</h2><p>系统分为以下五个功能模块，分别是首页、地图数据管理、地图模块、属性数据管理、用户信息管理，如图所示。<br><img src="http://i4.piimg.com/567571/393cadbc34024884.png" alt=""></p>
+<h2 id="代码文件组织"><a href="#代码文件组织" class="headerlink" title="代码文件组织"></a>代码文件组织</h2><p>在mobile文件夹下包含以下文件夹：common（存放公共的类库、图片等）、home（首页）、mapmgr（地图数据管理模块）、mapmodule（地图模块）、tablemgr（属性数据管理模块）、usermgr（用户信息管理模块）。<br>每个模块文件夹下包含：common（模块需要的公共资源）、modules（该模块下的子模块）、index.html（网页文档）。</p>
+<h1 id="2-关键技术"><a href="#2-关键技术" class="headerlink" title="2.关键技术"></a>2.关键技术</h1><h2 id="2-1-适配不同分辨率的设备"><a href="#2-1-适配不同分辨率的设备" class="headerlink" title="2.1 适配不同分辨率的设备"></a>2.1 适配不同分辨率的设备</h2><p>为了适配不同型号的移动终端，需使用viewport动态设置页面宽度。使用方法如下：在网页的head页面元素中加入meta标签。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width,initial-scale=1.0,</span></span><br><span class="line"><span class="string">maximum-scale=1.0, user-scalable=0"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>该<meta>标签的作用是让当前viewport的宽度等于设备的宽度，页面第一次加载时的缩放比例为1，同时不允许用户手动缩放。</p>
+<h2 id="2-2-空气质量图表展示"><a href="#2-2-空气质量图表展示" class="headerlink" title="2.2 空气质量图表展示"></a>2.2 空气质量图表展示</h2><p>利用百度API提供的BMap.LocalCity获取用户当前所在城市，通过逻辑判断获取数据库最新的当前城市的空气质量数据。仪表盘是用来表示当前城市空气质量指数平均值及所属污染级别。利用series将仪表盘的区间范围设置为[0,500]，以10段进行分割，用绿色（#32f43e）、黄色（#e4f33e）、橙色（#e4993c）、红色（#f60003）、紫色（#9f034c）、褐红色（#800025）6种颜色将10段划为空气质量级别对应的优、良、轻度污染、中度污染、重度污染和严重污染。</p>
+<p>热力图是基于Canvas的，因此在使用热力图之前需要利用isSupportCanvas判断浏览器是否支持Canvas，然后需要生成一个百度地图实例map，在已经生成的地图上将热力图叠加上去即可，其中传入的参数points为用户选择的空气质量指标对应的包含站点经纬度及指标值的对象数组。</p>
+<h2 id="2-3-用户评论、点赞"><a href="#2-3-用户评论、点赞" class="headerlink" title="2.3 用户评论、点赞"></a>2.3 用户评论、点赞</h2><p>1、用户评论实现思路：在g_usercomment表中插入一条记录；判断评论总数表中是否有该地图的记录，有就更新g_usercommentNum表中该条记录，否则插入一条新的记录。<br><img src="http://i2.piimg.com/567571/6d25c1f00a3ce09e.png" alt=""></p>
+<p>2、用户点赞实现思路：查询g_userpraise表中是否有该用户为该地图点赞的记录，有的话则删除该记录，并更新g_userpraiseNum表中对应记录点赞数减1；若没有记录，则在g_userpraise表添加一条记录，并判断g_userpraiseNum（点赞总数表）中是否有该地图的记录，有就更新g_userpraiseNum表中该条记录，否则插入一条新的记录。</p>
+<h2 id="2-4-定位、逆地理编码"><a href="#2-4-定位、逆地理编码" class="headerlink" title="2.4 定位、逆地理编码"></a>2.4 定位、逆地理编码</h2><h3 id="2-4-1-地图定位"><a href="#2-4-1-地图定位" class="headerlink" title="2.4.1 地图定位"></a>2.4.1 地图定位</h3><p>1、利用HTML5 geolocation服务的getCurrentPosition方法获取经纬度，使用之前检测浏览器是否支持HTML5 geolocation。<br>2、获取位置成功后，若为上海地图则转为上海坐标，实例化一个标注加到地图上并zoomTo到该位置；若不是则直接添加标注和zoomTo到该位置。</p>
+<h3 id="2-4-2-逆地理编码"><a href="#2-4-2-逆地理编码" class="headerlink" title="2.4.2 逆地理编码"></a>2.4.2 逆地理编码</h3><p>1、将之前获取的经纬度坐标转为百度地图上的经纬度，接口由<a href="http://www.zdoz.net/apiList.html" target="_blank" rel="noopener">zdoz</a>提供。<br>2、利用百度地图API反地理编码得到该经纬度对应的地址信息：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myGeo = <span class="keyword">new</span> BMap.Geocoder();</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.piimg.com/567571/a8f24b21fb87db9d.png" alt=""></p>
+<h2 id="2-5-拍照"><a href="#2-5-拍照" class="headerlink" title="2.5 拍照"></a>2.5 拍照</h2><p>在移动端实现拍照或选取相册使用的是类型为file的input标签，但是不需要使用其默认的样式，因此将input标签css样式的透明度opacity设置为0，并在其上覆盖其他元素。<br>触发了file类型的input元素的onchange事件后，通过File API提供的异步读取文件的接口FileReader，使用readAsDataURL方法读取文件内容。<br>在上传图片之前，为了实现图片的预览，使用createObjectURL方法（也可使用FileReader对象的readAsDataURL方法），该方法可创建一个新的对象URL，通过这个URL可以获取到传入的file对象或blob对象的完整内容,然后将图片元素的src属性指向这个URL，实现图片预览功能：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> URL = <span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL;</span><br><span class="line"><span class="keyword">var</span> blob = URL.createObjectURL(files[<span class="number">0</span>]);</span><br><span class="line">$(<span class="string">"#firstImg"</span>).attr(<span class="string">"src"</span>,blob);</span><br></pre></td></tr></table></figure></p>
+<p>使用geoserver服务器fileserver接口的putbase64方法，将文件上传到服务器中，并在数据库中记录相关信息，包括：用户ID、经纬度、描述信息、图片存放的路径和时间。<br><img src="http://i2.piimg.com/567571/e07a00837c1f0786.png" alt=""></p>
+<h2 id="2-6-记录路线轨迹"><a href="#2-6-记录路线轨迹" class="headerlink" title="2.6 记录路线轨迹"></a>2.6 记录路线轨迹</h2><p>开启记录轨迹模式后，每隔3秒记录下当前用户所在位置，可暂定记录，也可继续开启该模式，还可以将记录的轨迹上传到服务器供下次查看。</p>
+<p>首先需要判断浏览器是否支持HTML5的geolocation，若不支持或获取位置失败则根据错误类型给出相应的提示。利用 navigator.geolocation对象的getCurrentPosition方法获取用户位置，并利用setInterval每隔3秒获取一次（可改为直接使用watchPosition方法，而不需要使用间隔调用）。</p>
+<p>获取到用户位置信息后记录下经纬度数据，若是第一次获取实例化一个标注点添加到地图上，并将地图缩放到该点的位置；之后每次调用判断当前记录的位置信息和上一次记录的经纬度是否相同，如果不同就记录下该点位置，并绘制路线：根据所记录的位置实例化一个线要素，并根据第一个和最后一个点的位置信息实例化起点和终点的标注点。判断最后一个点是否在屏幕中间区域，即（x坐标是否位于地图宽度的1/4到3/4处，y坐标是否位于地图高度的1/4到3/4处），如果不是则将地图缩放到最后一个点为中心的位置。</p>
+<p>暂定或取消记录轨迹，就是利用clearInterval命令取消固定时间调用获取位置函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.intervalID) &#123; <span class="built_in">window</span>.clearInterval(<span class="keyword">this</span>.intervalID);&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.piimg.com/567571/1160660fcecab6f1.png" alt=""></p>
+<h1 id="3-系统展示"><a href="#3-系统展示" class="headerlink" title="3.系统展示"></a>3.系统展示</h1><h2 id="模块名称：首页"><a href="#模块名称：首页" class="headerlink" title="模块名称：首页"></a>模块名称：首页</h2><p><img src="http://i2.piimg.com/567571/e0a41a2547baa7cf.jpg" alt=""></p>
+<h2 id="模块名称：地图数据管理"><a href="#模块名称：地图数据管理" class="headerlink" title="模块名称：地图数据管理"></a>模块名称：地图数据管理</h2><p><img src="http://i1.piimg.com/567571/286e3300f966c9a8.jpg" alt=""></p>
+<h2 id="模块名称：地图模块"><a href="#模块名称：地图模块" class="headerlink" title="模块名称：地图模块"></a>模块名称：地图模块</h2><p><img src="http://i1.piimg.com/567571/7b079be8cd6be723.jpg" alt=""><br><img src="http://i1.piimg.com/567571/064c6133f85036d9.jpg" alt=""></p>
+<h2 id="模块名称：用户信息管理模块"><a href="#模块名称：用户信息管理模块" class="headerlink" title="模块名称：用户信息管理模块"></a>模块名称：用户信息管理模块</h2><p><img src="http://i1.piimg.com/567571/5a7d157b99f11f5a.jpg" alt=""></p>
+<h1 id="4-存在的不足"><a href="#4-存在的不足" class="headerlink" title="4.存在的不足"></a>4.存在的不足</h1><h2 id="4-1-属性数据查看"><a href="#4-1-属性数据查看" class="headerlink" title="4.1 属性数据查看"></a>4.1 属性数据查看</h2><p>进一步实现表格形式的属性数据查看，可以查看一副地图所具有的所有属性数据。还可增加点查功能，点击某个要素后弹出与该要素相关的属性数据。</p>
+<h2 id="4-2-分享功能"><a href="#4-2-分享功能" class="headerlink" title="4.2 分享功能"></a>4.2 分享功能</h2><p>增加地图或者数据的分享功能，与pc端模式保持一致。还可以提供链接的形式分享，可供更多的用户查看、使用。</p>
+<h2 id="4-3-权限管理"><a href="#4-3-权限管理" class="headerlink" title="4.3 权限管理"></a>4.3 权限管理</h2><p>考虑我们平台的受众群体，如果是开放的、面向大众的，可使用微信平台提供的接口，实现更智能的权限管理，只要用户微信授权后即可登录系统，免去了登录的繁琐过程。</p>
+<h2 id="4-4-改进样式写法"><a href="#4-4-改进样式写法" class="headerlink" title="4.4 改进样式写法"></a>4.4 改进样式写法</h2><h3 id="4-4-1-使用rem单位开发"><a href="#4-4-1-使用rem单位开发" class="headerlink" title="4.4.1 使用rem单位开发"></a>4.4.1 使用rem单位开发</h3><p>系统开发时字体大小使用的是以px作为单位，而这对于不同屏幕分辨率的设备以及横竖屏的情况，大小始终保持不变，无法实现字体大小的屏幕自适应。在css3中引入了rem的概念，rem是相对于根元素<code>&lt;html&gt;</code>来设置字体大小。通过rem单位，实现字体的自适应。</p>
+<h3 id="4-4-2-使用icon-font"><a href="#4-4-2-使用icon-font" class="headerlink" title="4.4.2 使用icon font"></a>4.4.2 使用icon font</h3><p>图标主要使用的都是<code>&lt;img&gt;</code>标签，而且基本上都是使用单个图片文件，没有合并成CSS Sprite，这样增加了HTTP请求的次数。可以考虑使用IconFont技术，使用字体文件取代图片文件，这种方式减轻了HTTP请求的负担，而且文件更加容易编辑和维护。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/mobile/" rel="tag">#mobile</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/React简介与应用实践/" rel="next" title="React简介与应用实践">
+                <i class="fa fa-chevron-left"></i> React简介与应用实践
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/10/http2 的优势/" rel="prev" title="HTTP/2 的优势">
+                HTTP/2 的优势 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/10/10/ccgis移动版/"
+           data-title="ccgis移动版" data-url="http://yoursite.com/2018/10/10/ccgis移动版/">
+      </div>
+    
+  </div>
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/hsd.jpg"
+               alt="Leo_婷子酱" />
+          <p class="site-author-name" itemprop="name">Leo_婷子酱</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jttry" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-系统设计"><span class="nav-number">1.</span> <span class="nav-text">1.系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能设计"><span class="nav-number">1.2.</span> <span class="nav-text">功能设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码文件组织"><span class="nav-number">1.3.</span> <span class="nav-text">代码文件组织</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-关键技术"><span class="nav-number">2.</span> <span class="nav-text">2.关键技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-适配不同分辨率的设备"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 适配不同分辨率的设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-空气质量图表展示"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 空气质量图表展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-用户评论、点赞"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 用户评论、点赞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-定位、逆地理编码"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 定位、逆地理编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-地图定位"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 地图定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-逆地理编码"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 逆地理编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-拍照"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 拍照</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-记录路线轨迹"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 记录路线轨迹</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-系统展示"><span class="nav-number">3.</span> <span class="nav-text">3.系统展示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模块名称：首页"><span class="nav-number">3.1.</span> <span class="nav-text">模块名称：首页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块名称：地图数据管理"><span class="nav-number">3.2.</span> <span class="nav-text">模块名称：地图数据管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块名称：地图模块"><span class="nav-number">3.3.</span> <span class="nav-text">模块名称：地图模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块名称：用户信息管理模块"><span class="nav-number">3.4.</span> <span class="nav-text">模块名称：用户信息管理模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-存在的不足"><span class="nav-number">4.</span> <span class="nav-text">4.存在的不足</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-属性数据查看"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 属性数据查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-分享功能"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 分享功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-权限管理"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-改进样式写法"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 改进样式写法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-使用rem单位开发"><span class="nav-number">4.4.1.</span> <span class="nav-text">4.4.1 使用rem单位开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-使用icon-font"><span class="nav-number">4.4.2.</span> <span class="nav-text">4.4.2 使用icon font</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo_婷子酱</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jttry"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

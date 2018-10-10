@@ -1,0 +1,890 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,开发工具," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1.版本控制 SVN  GIT推荐使用git，git安装和图形化界面tortoiseGit安装，git与github联系不在本文的讨论范围，请自行搜索。在github中新建一个项目在本地使用图形Git–&amp;gt;git clone或者使用命令：1git clone  git://github.com/someone/some_project.git   文件夹就是我们的项目文件夹。 2.前端自动化">
+<meta name="keywords" content="javascript,开发工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="现代web前端开发工具和流程">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/现代web前端开发工具和流程/index.html">
+<meta property="og:site_name" content="暖色调">
+<meta property="og:description" content="1.版本控制 SVN  GIT推荐使用git，git安装和图形化界面tortoiseGit安装，git与github联系不在本文的讨论范围，请自行搜索。在github中新建一个项目在本地使用图形Git–&amp;gt;git clone或者使用命令：1git clone  git://github.com/someone/some_project.git   文件夹就是我们的项目文件夹。 2.前端自动化">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-10T03:24:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="现代web前端开发工具和流程">
+<meta name="twitter:description" content="1.版本控制 SVN  GIT推荐使用git，git安装和图形化界面tortoiseGit安装，git与github联系不在本文的讨论范围，请自行搜索。在github中新建一个项目在本地使用图形Git–&amp;gt;git clone或者使用命令：1git clone  git://github.com/someone/some_project.git   文件夹就是我们的项目文件夹。 2.前端自动化">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/现代web前端开发工具和流程/"/>
+
+  <title> 现代web前端开发工具和流程 | 暖色调 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">暖色调</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Every little helps</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                现代web前端开发工具和流程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-10T11:24:40+08:00" content="2018-10-10">
+              2018-10-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/10/10/现代web前端开发工具和流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/10/现代web前端开发工具和流程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-版本控制"><a href="#1-版本控制" class="headerlink" title="1.版本控制"></a>1.版本控制</h1><ul>
+<li><strong>SVN</strong> </li>
+<li><strong>GIT</strong><br>推荐使用git，git安装和图形化界面tortoiseGit安装，<a href="http://www.cnblogs.com/peterzd/archive/2012/04/22/2465230.html" target="_blank" rel="noopener">git与github联系</a>不在本文的讨论范围，请自行搜索。<br>在github中新建一个项目<br>在本地使用图形Git–&gt;git clone<br>或者使用命令：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone  git:<span class="comment">//github.com/someone/some_project.git</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>文件夹就是我们的项目文件夹。</p>
+<h1 id="2-前端自动化"><a href="#2-前端自动化" class="headerlink" title="2.前端自动化"></a>2.前端自动化</h1><ul>
+<li><strong><a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">gulp</a></strong></li>
+<li><strong><a href="http://www.gruntjs.net/" target="_blank" rel="noopener">grunt</a></strong></li>
+</ul>
+<h2 id="2-1-gulp"><a href="#2-1-gulp" class="headerlink" title="2.1 gulp"></a>2.1 <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">gulp</a></h2><p>Gulp通过流和代码优于配置策略来尽量简化任务编写的工作。当使用流时，Gulp去除了中间文件，只将最后的输出写入磁盘，整个过程因此变得更快。</p>
+<h3 id="2-1-1-安装命令行工具"><a href="#2-1-1-安装命令行工具" class="headerlink" title="2.1.1 安装命令行工具"></a>2.1.1 安装命令行工具</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g gulp</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2-创建好package-json文件（包管理文件）-安装局部gulp"><a href="#2-1-2-创建好package-json文件（包管理文件）-安装局部gulp" class="headerlink" title="2.1.2 创建好package.json文件（包管理文件）,安装局部gulp"></a>2.1.2 创建好package.json文件（包管理文件）,安装局部gulp</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev gulp</span><br></pre></td></tr></table></figure>
+<p>下载的包会存放在项目的node_modules文件夹下<br>包依赖会加入到<code>package.json</code>中:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"gulp"</span>: <span class="string">"^3.9.1"</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-1-3-新建gulpfile-js文件"><a href="#2-1-3-新建gulpfile-js文件" class="headerlink" title="2.1.3 新建gulpfile.js文件"></a>2.1.3 新建gulpfile.js文件</h3><h4 id="四个主要API"><a href="#四个主要API" class="headerlink" title="四个主要API"></a>四个主要API</h4><ul>
+<li>gulp.task(name[, deps], fn)：注册任务</li>
+<li>gulp.src(globs[, options])：指明源文件路径</li>
+<li>gulp.dest(path)：指明任务处理后的目标输出路径</li>
+<li>gulp.watch(glob[, options], tasks)／gulp.watch(glob[, options, cb])：监视文件的变化并运行相应的任务。</li>
+</ul>
+<p>实例见<code>3.2 在gulpfile.js中配置</code>。</p>
+<h3 id="2-1-4-运行"><a href="#2-1-4-运行" class="headerlink" title="2.1.4 运行"></a>2.1.4 运行</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-grunt"><a href="#2-2-grunt" class="headerlink" title="2.2 grunt"></a>2.2 <a href="http://www.gruntjs.net/" target="_blank" rel="noopener">grunt</a></h2><h3 id="2-2-1-安装-grunt-cli"><a href="#2-2-1-安装-grunt-cli" class="headerlink" title="2.2.1 安装 grunt-cli"></a>2.2.1 安装 grunt-cli</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install grunt-cli -g</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-2-配置grunt"><a href="#2-2-2-配置grunt" class="headerlink" title="2.2.2 配置grunt"></a>2.2.2 配置grunt</h3><p>在项目中添加两份文件：package.json 和 Gruntfile。</p>
+<ul>
+<li>package.json //项目自动化所依赖的相关插件。</li>
+<li>Gruntfile.js //项目自动化工作流配置文件。</li>
+</ul>
+<h4 id="安装Grunt-和-grunt插件"><a href="#安装Grunt-和-grunt插件" class="headerlink" title="安装Grunt 和 grunt插件"></a>安装Grunt 和 grunt插件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install grunt --save-dev</span><br><span class="line">npm install grunt-contrib-jshint --save-dev</span><br></pre></td></tr></table></figure>
+<h4 id="配置Gruntfile-js文件"><a href="#配置Gruntfile-js文件" class="headerlink" title="配置Gruntfile.js文件"></a>配置Gruntfile.js文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Project configuration.</span></span><br><span class="line">  grunt.initConfig(&#123;</span><br><span class="line">    pkg: grunt.file.readJSON(<span class="string">'package.json'</span>),</span><br><span class="line">    uglify: &#123;</span><br><span class="line">      options: &#123;</span><br><span class="line">        banner: <span class="string">'/*! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today("yyyy-mm-dd") %&gt; */\n'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      build: &#123;</span><br><span class="line">        src: <span class="string">'src/&lt;%= pkg.name %&gt;.js'</span>,</span><br><span class="line">        dest: <span class="string">'build/&lt;%= pkg.name %&gt;.min.js'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载包含 "uglify" 任务的插件。</span></span><br><span class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-uglify'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 默认被执行的任务列表。</span></span><br><span class="line">  grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'uglify'</span>]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-3-运行"><a href="#2-2-3-运行" class="headerlink" title="2.2.3 运行"></a>2.2.3 运行</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt</span><br></pre></td></tr></table></figure>
+<h1 id="3-SASS"><a href="#3-SASS" class="headerlink" title="3.SASS"></a>3.SASS</h1><p>‘CSS预处理器’，它的基本思想是，用一种专门的编程语言，进行网页样式设计，然后再编译成正常的CSS文件。</p>
+<h2 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev gulp-sass</span><br><span class="line">npm install --save-dev gulp-watch</span><br></pre></td></tr></table></figure>
+<p><code>gulp-sass</code>是用来将SASS转化为CSS的，<code>gulp-watch</code>是用来观察文件修改的变化<br>我们来看<code>package.json</code>文件的变化<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"gulp"</span>:<span class="string">"^3.9.1"</span>,</span><br><span class="line">    <span class="string">"gulp-sass"</span>:<span class="string">"^2.3.1"</span>,</span><br><span class="line">    <span class="string">"gulp-watch"</span>:<span class="string">"^4.3.6"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-2-在gulpfile-js-中配置"><a href="#3-2-在gulpfile-js-中配置" class="headerlink" title="3.2 在gulpfile.js 中配置"></a>3.2 在<code>gulpfile.js</code> 中配置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</span><br><span class="line"><span class="keyword">var</span> path = &#123;</span><br><span class="line">    sass_isstudy:<span class="string">'./modules/istudy/sass/'</span>,</span><br><span class="line">&#125;;</span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 将你的默认的任务代码放在这</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(path.sass_isstudy+<span class="string">'*.scss'</span>)</span><br><span class="line">        .pipe(sass.sync().on(<span class="string">'error'</span>, sass.logError))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./modules/istudy/css'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'sass:watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     gulp.watch(path.sass_isstudy+<span class="string">'*.scss'</span>, [<span class="string">'sass'</span>]);</span><br><span class="line">     <span class="comment">// gulp.watch('./modules/istudy/sass/*.scss').on('change',livereload);</span></span><br><span class="line">&#125;);   <span class="comment">//监控sass变化</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-3-命令执行"><a href="#3-3-命令执行" class="headerlink" title="3.3 命令执行"></a>3.3 命令执行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp sass:watch</span><br></pre></td></tr></table></figure>
+<p>执行上诉命令，在sass文件修改、保存后，gulp就会将sass文件转化为css文件</p>
+<h1 id="4-模块化编程"><a href="#4-模块化编程" class="headerlink" title="4.模块化编程"></a>4.模块化编程</h1><p>具体参见文章【javascript模块化编程】</p>
+<h2 id="4-1-ES5时代"><a href="#4-1-ES5时代" class="headerlink" title="4.1 ES5时代"></a>4.1 <strong>ES5时代</strong></h2><p>以seajs为例：<br>CMD(Custom Module Definition)通用模块加载</p>
+<h3 id="4-1-1-seajs"><a href="#4-1-1-seajs" class="headerlink" title="4.1.1 seajs"></a>4.1.1 seajs</h3><p><strong>引入seajs文件</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"../../common/jsext/sea-debug.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>seajs 的简单配置</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">seajs.config(&#123;</span><br><span class="line">  base: <span class="string">"../sea-modules/"</span>,</span><br><span class="line">  alias: &#123;</span><br><span class="line">    <span class="string">"jquery"</span>: <span class="string">"jquery/jquery/1.10.1/jquery.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 加载入口模块</span></span><br><span class="line">seajs.use(<span class="string">"../static/hello/src/main"</span>);<span class="comment">//入口</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>定义模块：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有模块都通过 define 来定义</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过 require 引入依赖</span></span><br><span class="line">  <span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line">  <span class="keyword">var</span> Spinning = <span class="built_in">require</span>(<span class="string">'./spinning'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过 exports 对外提供接口</span></span><br><span class="line">  exports.doSomething = ...</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 或者通过 module.exports 提供整个接口</span></span><br><span class="line">  <span class="built_in">module</span>.exports = ...</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-2-ES6时代"><a href="#4-2-ES6时代" class="headerlink" title="4.2 ES6时代"></a>4.2 <strong>ES6时代</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bar.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">who</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello "</span>+who;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;hello&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//foo.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;hello&#125; <span class="keyword">from</span> <span class="string">"bar"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"zs"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">awe</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(bar.hello(name).toUpperCase());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;awe&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//baz.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;bar&#125; <span class="keyword">from</span> <span class="string">"bar"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;foo&#125; <span class="keyword">from</span> <span class="string">"foo"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bar.hello(<span class="string">'张三'</span>));<span class="comment">//hello 张三</span></span><br><span class="line"></span><br><span class="line">foo.awe();<span class="comment">//HELLO ZS</span></span><br></pre></td></tr></table></figure>
+<p>当然现在需要使用babel转成es5，并且要使用打包工具browserify webpack rollup 等才能直接在现在的浏览器上运行。</p>
+<h1 id="5-组件化"><a href="#5-组件化" class="headerlink" title="5.组件化"></a>5.组件化</h1><p>组件化的思路是将一个模块独立开来，比如要写一个选择器按钮，将其分为三层：</p>
+<p>  数据层：用来决定按钮个数以及按钮是否选择<br>  表现层：按钮使用现有的ui组件<br>  逻辑层：按钮事件等逻辑处理</p>
+<p>参考阅读：</p>
+<ul>
+<li><a href="http://blog.csdn.net/sunboy_2050/article/details/7529022" target="_blank" rel="noopener">Git 常用命令详解</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">SASS用法指南-阮一峰</a></li>
+<li><a href="http://www.w3cplus.com/" target="_blank" rel="noopener">SASS入门</a></li>
+<li>[阮一峰-es6入门]（<a href="http://es6.ruanyifeng.com/）" target="_blank" rel="noopener">http://es6.ruanyifeng.com/）</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/开发工具/" rel="tag">#开发工具</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/热力图实现原理/" rel="next" title="热力图实现原理">
+                <i class="fa fa-chevron-left"></i> 热力图实现原理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/10/阿里大于短信服务/" rel="prev" title="短信服务">
+                短信服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/10/10/现代web前端开发工具和流程/"
+           data-title="现代web前端开发工具和流程" data-url="http://yoursite.com/2018/10/10/现代web前端开发工具和流程/">
+      </div>
+    
+  </div>
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/hsd.jpg"
+               alt="Leo_婷子酱" />
+          <p class="site-author-name" itemprop="name">Leo_婷子酱</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jttry" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-版本控制"><span class="nav-number">1.</span> <span class="nav-text">1.版本控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-前端自动化"><span class="nav-number">2.</span> <span class="nav-text">2.前端自动化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-gulp"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 gulp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-安装命令行工具"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 安装命令行工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-创建好package-json文件（包管理文件）-安装局部gulp"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 创建好package.json文件（包管理文件）,安装局部gulp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-新建gulpfile-js文件"><span class="nav-number">2.1.3.</span> <span class="nav-text">2.1.3 新建gulpfile.js文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四个主要API"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">四个主要API</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-运行"><span class="nav-number">2.1.4.</span> <span class="nav-text">2.1.4 运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-grunt"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 grunt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-安装-grunt-cli"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 安装 grunt-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-配置grunt"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 配置grunt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Grunt-和-grunt插件"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">安装Grunt 和 grunt插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置Gruntfile-js文件"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">配置Gruntfile.js文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-运行"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 运行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-SASS"><span class="nav-number">3.</span> <span class="nav-text">3.SASS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-安装"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-在gulpfile-js-中配置"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 在gulpfile.js 中配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-命令执行"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 命令执行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-模块化编程"><span class="nav-number">4.</span> <span class="nav-text">4.模块化编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-ES5时代"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 ES5时代</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-seajs"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 seajs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-ES6时代"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 ES6时代</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-组件化"><span class="nav-number">5.</span> <span class="nav-text">5.组件化</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo_婷子酱</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jttry"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

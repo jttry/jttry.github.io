@@ -1,0 +1,865 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,wepy,微信小程序," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="wepy-housekeeper微信小程序–你的个人生活管家  本项目基于wepy框架搭建了用于记录生活的微信小程序，使用了微信运动、天气、图片轮播、redux数据管理、云函数云数据库及云存储等特性。首先简要介绍原生微信语法及wepy框架，然后依次对以上使用到的技术进行说明。  一、微信小程序原生语法1、应用结构123456789101112131415project├── pages|   ├─">
+<meta name="keywords" content="javascript,wepy,微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于wepy框架的微信小程序开发">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/基于wepy框架的微信小程序开发/index.html">
+<meta property="og:site_name" content="暖色调">
+<meta property="og:description" content="wepy-housekeeper微信小程序–你的个人生活管家  本项目基于wepy框架搭建了用于记录生活的微信小程序，使用了微信运动、天气、图片轮播、redux数据管理、云函数云数据库及云存储等特性。首先简要介绍原生微信语法及wepy框架，然后依次对以上使用到的技术进行说明。  一、微信小程序原生语法1、应用结构123456789101112131415project├── pages|   ├─">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://636c-cloud-demo-1110d2-1257658184.tcb.qcloud.la/app.png?sign=95927e838e6eecd74265f6972b0221d2&t=1539077533">
+<meta property="og:image" content="https://636c-cloud-demo-1110d2-1257658184.tcb.qcloud.la/add.png?sign=31096efdc765e188dd51f3272a2d327e&t=1539138862">
+<meta property="og:image" content="https://636c-cloud-demo-1110d2-1257658184.tcb.qcloud.la/diary1.png?sign=bb7a5d53fb94afc53c4c3787716b6c22&t=1539079231/w/240">
+<meta property="og:updated_time" content="2018-10-10T03:39:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于wepy框架的微信小程序开发">
+<meta name="twitter:description" content="wepy-housekeeper微信小程序–你的个人生活管家  本项目基于wepy框架搭建了用于记录生活的微信小程序，使用了微信运动、天气、图片轮播、redux数据管理、云函数云数据库及云存储等特性。首先简要介绍原生微信语法及wepy框架，然后依次对以上使用到的技术进行说明。  一、微信小程序原生语法1、应用结构123456789101112131415project├── pages|   ├─">
+<meta name="twitter:image" content="https://636c-cloud-demo-1110d2-1257658184.tcb.qcloud.la/app.png?sign=95927e838e6eecd74265f6972b0221d2&t=1539077533">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/基于wepy框架的微信小程序开发/"/>
+
+  <title> 基于wepy框架的微信小程序开发 | 暖色调 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">暖色调</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Every little helps</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于wepy框架的微信小程序开发
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-10T11:34:53+08:00" content="2018-10-10">
+              2018-10-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/10/10/基于wepy框架的微信小程序开发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/10/基于wepy框架的微信小程序开发/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="wepy-housekeeper"><a href="#wepy-housekeeper" class="headerlink" title="wepy-housekeeper"></a>wepy-housekeeper</h1><p>微信小程序–你的个人生活管家</p>
+<blockquote>
+<p>本项目基于wepy框架搭建了用于记录生活的微信小程序，使用了微信运动、天气、图片轮播、redux数据管理、云函数云数据库及云存储等特性。首先简要介绍原生微信语法及wepy框架，然后依次对以上使用到的技术进行说明。</p>
+</blockquote>
+<h4 id="一、微信小程序原生语法"><a href="#一、微信小程序原生语法" class="headerlink" title="一、微信小程序原生语法"></a>一、微信小程序原生语法</h4><h5 id="1、应用结构"><a href="#1、应用结构" class="headerlink" title="1、应用结构"></a>1、应用结构</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">├── pages</span><br><span class="line">|   ├── index</span><br><span class="line">|   |   ├── index.js    index 页面逻辑</span><br><span class="line">|   |   ├── index.json  index 页面配置</span><br><span class="line">|   |   ├── index.wxml  index 页面结构</span><br><span class="line">|   |   └── index.wxss  index 页面样式</span><br><span class="line">|   └── log</span><br><span class="line">|       ├── log.js      log 页面逻辑</span><br><span class="line">|       ├── log.json    log 页面配置</span><br><span class="line">|       ├── log.wxml    log 页面结构</span><br><span class="line">|       └── log.wxss    log 页面样式</span><br><span class="line">├── app.js              小程序逻辑</span><br><span class="line">├── app.json            小程序公共配置</span><br><span class="line">└── app.wxss            小程序公共样式</span><br></pre></td></tr></table></figure>
+<h5 id="2、循环列表"><a href="#2、循环列表" class="headerlink" title="2、循环列表"></a>2、循环列表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for=&quot;&#123;&#123;array&#125;&#125;&quot; wx:for-index=&quot;idx&quot; wx:for-item=&quot;itemName&quot;</span><br><span class="line">wx:key=&quot;unique&quot;&gt;</span><br><span class="line">  &#123;&#123;idx&#125;&#125;: &#123;&#123;itemName.message&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<p>wx:for-item 可以指定数组当前元素的变量名，默认值：item</p>
+<p>wx:for-index 可以指定数组当前下标的变量名，默认值：index</p>
+<p>wx:key 代表唯一值的属性，如果item是数字，使用 wx:key=”*this”</p>
+<h5 id="3、条件渲染"><a href="#3、条件渲染" class="headerlink" title="3、条件渲染"></a>3、条件渲染</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125;&#125;&quot;&gt; 1 &lt;/view&gt;</span><br><span class="line">&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125;&#125;&quot;&gt; 2 &lt;/view&gt;</span><br><span class="line">&lt;view wx:else&gt; 3 &lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="4、事件"><a href="#4、事件" class="headerlink" title="4、事件"></a>4、事件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view id=&quot;inner&quot; bind:touchstart=&quot;handleTap3&quot; capture-bind:touchstart=&quot;handleTap4&quot;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<p>bind:（冒泡阶段）<br>catch:（冒泡阶段）将取消冒泡阶段；<br>capture-bind:（捕获阶段）<br>capture-catch:（捕获阶段）将中断捕获阶段和取消冒泡阶段。</p>
+<h5 id="5、引用"><a href="#5、引用" class="headerlink" title="5、引用"></a>5、引用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;import src=&quot;item.wxml&quot;/&gt;</span><br><span class="line">&lt;include src=&quot;header.wxml&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>import:只会 import 目标文件中定义的 template<br>include:将目标文件代码拷贝到include位置</p>
+<h5 id="6、数据绑定"><a href="#6、数据绑定" class="headerlink" title="6、数据绑定"></a>6、数据绑定</h5><p>this.setData({title: ‘this is title’});</p>
+<h4 id="二、wepy框架简介"><a href="#二、wepy框架简介" class="headerlink" title="二、wepy框架简介"></a>二、wepy框架简介</h4><h5 id="1、应用结构-1"><a href="#1、应用结构-1" class="headerlink" title="1、应用结构"></a>1、应用结构</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">└── src</span><br><span class="line">    ├── pages</span><br><span class="line">    |   ├── index.wpy    index 页面逻辑、配置、结构、样式</span><br><span class="line">    |   └── log.wpy      log 页面逻辑、配置、结构、样式</span><br><span class="line">    └──app.wpy           小程序逻辑、公共配置、公共样式</span><br></pre></td></tr></table></figure>
+<h5 id="2、app-wpy"><a href="#2、app-wpy" class="headerlink" title="2、app.wpy"></a>2、app.wpy</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> wepy <span class="keyword">from</span> <span class="string">'wepy'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">wepy</span>.<span class="title">app</span> </span>&#123;</span><br><span class="line">    config = &#123;</span><br><span class="line">        <span class="string">"pages"</span>:[</span><br><span class="line">            <span class="string">"pages/index/index"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">"window"</span>:&#123;</span><br><span class="line">            <span class="string">"backgroundTextStyle"</span>: <span class="string">"light"</span>,</span><br><span class="line">            <span class="string">"navigationBarBackgroundColor"</span>: <span class="string">"#fff"</span>,</span><br><span class="line">            <span class="string">"navigationBarTitleText"</span>: <span class="string">"WeChat"</span>,</span><br><span class="line">            <span class="string">"navigationBarTextStyle"</span>: <span class="string">"black"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"tabBar"</span>: &#123; </span><br><span class="line">            <span class="string">"list"</span>: []   <span class="comment">//导航栏</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    onLaunch() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    globalData = &#123;&#125;  <span class="comment">//全局数据</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style lang="less"&gt;</span></span><br><span class="line"><span class="regexp">/</span>** less **<span class="regexp">/</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="3、page-wpy"><a href="#3、page-wpy" class="headerlink" title="3、page.wpy"></a>3、page.wpy</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> wepy <span class="keyword">from</span> <span class="string">'wepy'</span>;</span><br><span class="line"><span class="keyword">import</span> Counter <span class="keyword">from</span> <span class="string">'../components/counter'</span>; <span class="comment">//自定义组件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Page</span> <span class="keyword">extends</span> <span class="title">wepy</span>.<span class="title">page</span> </span>&#123;</span><br><span class="line">    config = &#123;&#125;;  <span class="comment">// 页面的配置项</span></span><br><span class="line">    components = &#123;<span class="attr">counter1</span>: Counter&#125;;</span><br><span class="line"></span><br><span class="line">    data = &#123;&#125;;   <span class="comment">// 用于渲染的数据，template中直接使用，script中this.xx</span></span><br><span class="line">    computed = &#123;&#125;;  <span class="comment">// 声明计算属性</span></span><br><span class="line">    watch = &#123;&#125;;  <span class="comment">// 声明数据watcher</span></span><br><span class="line">    methods = &#123;&#125;;<span class="comment">// wxml事件处理函数对象</span></span><br><span class="line"></span><br><span class="line">    events = &#123;&#125;; <span class="comment">// 用于监听组件之间的通信与交互事件的事件处理函数</span></span><br><span class="line">    onLoad() &#123;&#125;; <span class="comment">// 生命周期函数</span></span><br><span class="line">    <span class="comment">// Other properties / 普通自定义方法 / 自定义数据</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;template lang="wxml"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;view&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>view&gt;</span><br><span class="line">    &lt;counter1&gt;&lt;/counter1&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style lang="less"&gt;</span></span><br><span class="line"><span class="regexp">/</span>** less **<span class="regexp">/</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">注意点：</span><br><span class="line"><span class="number">1</span>、<span class="keyword">this</span>.$parent来访问App实例</span><br><span class="line"><span class="number">2</span>、循环</span><br><span class="line">    &lt;!-- 注意，使用<span class="keyword">for</span>属性，而不是使用wx:<span class="keyword">for</span>属性 --&gt;</span><br><span class="line">    &lt;repeat <span class="keyword">for</span>=<span class="string">"&#123;&#123;list&#125;&#125;"</span> key=<span class="string">"index"</span> index=<span class="string">"index"</span> item=<span class="string">"item"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/repeat&gt;</span></span><br><span class="line"><span class="regexp">   </span></span><br><span class="line"><span class="regexp">3、事件绑定语法</span></span><br><span class="line"><span class="regexp">   bindtap="click"           =&gt;    @tap="click"</span></span><br><span class="line"><span class="regexp">   catchtap="click"          =&gt;    @tap.stop="click"</span></span><br><span class="line"><span class="regexp">   capture-bind:tap="click"  =&gt;    @tap.capture="click"</span></span><br><span class="line"><span class="regexp">   capture-catch:tap="click" =&gt;    @tap.capture.stop="click"</span></span><br><span class="line"><span class="regexp">   </span></span><br><span class="line"><span class="regexp">4、数据绑定</span></span><br><span class="line"><span class="regexp">   this.title = 'this is title';</span></span><br><span class="line"><span class="regexp">   this.$apply();</span></span><br></pre></td></tr></table></figure>
+<h4 id="三、项目解析"><a href="#三、项目解析" class="headerlink" title="三、项目解析"></a>三、项目解析</h4><p><img src="https://636c-cloud-demo-1110d2-1257658184.tcb.qcloud.la/app.png?sign=95927e838e6eecd74265f6972b0221d2&amp;t=1539077533" alt="image"></p>
+<h5 id="1、微信运动"><a href="#1、微信运动" class="headerlink" title="1、微信运动"></a>1、微信运动</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 登录</span><br><span class="line">  <span class="keyword">async</span> getUserInfo(cb) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.globalData.userInfo) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.globalData.userInfo;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> login = <span class="keyword">await</span> wepy.login();</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> wepy.getUserInfo();</span><br><span class="line">    <span class="keyword">const</span> userInfo = &#123;...login, ...res.userInfo&#125;;</span><br><span class="line">    <span class="keyword">this</span>.globalData.userInfo = userInfo;</span><br><span class="line">    cb &amp;&amp; cb(userInfo);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 获取微信运动数据（加密数据）</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> wepy.getWeRunData();</span><br><span class="line"><span class="number">3.</span> 解密数据</span><br><span class="line">   <span class="number">3.1</span> 调用https:<span class="comment">//api.weixin.qq.com/sns/jscode2session    接口获取openid及session_key</span></span><br><span class="line">   <span class="number">3.2</span> 调用云函数获取到解密后的微信步数</span><br><span class="line">    wx.cloud.callFunction(&#123;</span><br><span class="line">        name: <span class="string">'getRunData'</span>, <span class="comment">// 云函数名称</span></span><br><span class="line">        data: &#123;  <span class="comment">// 传给云函数的参数</span></span><br><span class="line">            encryptedData: data.encryptedData,</span><br><span class="line">            iv: data.iv,</span><br><span class="line">            session_key: res.data.session_key</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">   <span class="number">3.3</span> 云函数</span><br><span class="line">    <span class="keyword">const</span> cloud = <span class="built_in">require</span>(<span class="string">'wx-server-sdk'</span>)</span><br><span class="line">    <span class="keyword">const</span> WXBizDataCrypt = <span class="built_in">require</span>(<span class="string">'WXBizDataCrypt.js'</span>);</span><br><span class="line">    <span class="keyword">const</span> AppId = <span class="string">'wxf6c91f679a67b89c'</span>;</span><br><span class="line">    cloud.init();</span><br><span class="line">    <span class="comment">// 云函数入口函数</span></span><br><span class="line">    exports.main = <span class="keyword">async</span> (event, context) =&gt; &#123;</span><br><span class="line">        <span class="keyword">var</span> pc = <span class="keyword">new</span> WXBizDataCrypt(AppId, event.session_key);</span><br><span class="line">        <span class="keyword">return</span> pc.decryptData(event.encryptedData, event.iv);</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="number">4.</span> 获取最后一天的步数</span><br><span class="line">    <span class="keyword">const</span> stepList = res.result.stepInfoList;</span><br><span class="line">    <span class="keyword">const</span> last = stepList[stepList.length - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">this</span>.lastDayStep = last.step;</span><br></pre></td></tr></table></figure>
+<h5 id="2、定位及地理编码"><a href="#2、定位及地理编码" class="headerlink" title="2、定位及地理编码"></a>2、定位及地理编码</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、定位，得到经纬度</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> wepy.getLocation();</span><br><span class="line">    <span class="keyword">const</span> latitude = res.latitude;<span class="comment">//纬度</span></span><br><span class="line">    <span class="keyword">const</span> longitude = res.longitude;<span class="comment">//经度</span></span><br><span class="line"><span class="number">2</span>、调用百度地图API进行地理编码</span><br><span class="line">    https:<span class="comment">//api.map.baidu.com/geocoder/v2/</span></span><br></pre></td></tr></table></figure>
+<h5 id="3、图片轮播"><a href="#3、图片轮播" class="headerlink" title="3、图片轮播"></a>3、图片轮播</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、图片上传到云存储管理</span><br><span class="line"><span class="number">2</span>、将图片地址列表放到easyMock里</span><br><span class="line"><span class="number">3</span>、请求数据</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> wepy.request(<span class="keyword">this</span>.$parent.globalData.apiHost + <span class="string">'/banner/list'</span>);</span><br><span class="line">    <span class="keyword">let</span> urls =  <span class="keyword">await</span> wx.cloud.getTempFileURL(&#123;</span><br><span class="line">        fileList: result.data.data</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.banners = urls.fileList;</span><br><span class="line"><span class="number">4</span>、加载图片</span><br><span class="line">    &lt;swiper</span><br><span class="line">        <span class="class"><span class="keyword">class</span></span>=<span class="string">"swiper_box"</span> </span><br><span class="line">        autoplay=<span class="string">"&#123;&#123;autoplay&#125;&#125;"</span></span><br><span class="line">        interval=<span class="string">"&#123;&#123;interval&#125;&#125;"</span></span><br><span class="line">        duration=<span class="string">"&#123;&#123;duration&#125;&#125;"</span></span><br><span class="line">        @change=<span class="string">"swiperchange"</span></span><br><span class="line">    &gt;</span><br><span class="line">        &lt;repeat <span class="keyword">for</span>=<span class="string">"&#123;&#123;banners&#125;&#125;"</span> key=<span class="string">"fileID"</span>&gt;</span><br><span class="line">            &lt;swiper-item&gt;</span><br><span class="line">                &lt;image</span><br><span class="line">                    src=<span class="string">"&#123;&#123;item.tempFileURL&#125;&#125;"</span></span><br><span class="line">                    <span class="class"><span class="keyword">class</span></span>=<span class="string">"slide-image"</span></span><br><span class="line">                    width=<span class="string">"750rpx"</span></span><br><span class="line">                    height=<span class="string">"400rpx"</span></span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/swiper-item&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>repeat&gt;</span><br><span class="line">    &lt;<span class="regexp">/swiper&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="4、天气、redux–组建间数据共享"><a href="#4、天气、redux–组建间数据共享" class="headerlink" title="4、天气、redux–组建间数据共享"></a>4、天气、redux–组建间数据共享</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、reducer</span><br><span class="line"></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> handleActions(&#123;</span><br><span class="line">        [GET_WEATHER] (state, action) &#123;</span><br><span class="line">            <span class="keyword">const</span> data = action.payload.data.HeWeather5[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">const</span> weather = data.now;</span><br><span class="line">            <span class="keyword">const</span> weatherQuality = data.aqi;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                ...state,</span><br><span class="line">                weather,</span><br><span class="line">                weatherQuality</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        weather: &#123;&#125;,</span><br><span class="line">        weatherQuality: &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、action</span><br><span class="line"></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">const</span> getWeather = createAction(GET_WEATHER, <span class="keyword">async</span> city =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> url = <span class="string">"https://free-api.heweather.com/v5/weather"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> wepy.request(<span class="string">`<span class="subst">$&#123;url&#125;</span>?city=<span class="subst">$&#123;city&#125;</span>&amp;key=4a555d4d1adc451d8ceeaa73869c9519`</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、组件内使用</span><br><span class="line">    <span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'wepy-redux'</span>;</span><br><span class="line"></span><br><span class="line">    @connect(&#123;</span><br><span class="line">        weather(state) &#123;</span><br><span class="line">            <span class="keyword">return</span> state.weather.weather;</span><br><span class="line">        &#125;,</span><br><span class="line">        weatherQuality(state) &#123;</span><br><span class="line">            <span class="keyword">return</span> state.weather.weatherQuality;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        getWeather,</span><br><span class="line">        getOpenId</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 使用state   xxx</span></span><br><span class="line">    <span class="comment">// 使用action  this.methods.xxx()</span></span><br></pre></td></tr></table></figure>
+<h5 id="5、写日记（云函数云数据库及云存储）"><a href="#5、写日记（云函数云数据库及云存储）" class="headerlink" title="5、写日记（云函数云数据库及云存储）"></a>5、写日记（云函数云数据库及云存储）</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、选择位置</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> wepy.chooseLocation();</span><br><span class="line">    <span class="keyword">this</span>.address = res.address;</span><br><span class="line">    <span class="keyword">this</span>.longitude = res.longitude;</span><br><span class="line">    <span class="keyword">this</span>.latitude = res.latitude;</span><br><span class="line"><span class="number">2</span>、日期选择器</span><br><span class="line">    &lt;picker <span class="class"><span class="keyword">class</span></span>=<span class="string">"item-content"</span> mode=<span class="string">"date"</span> value=<span class="string">"&#123;&#123;date&#125;&#125;"</span> @change=<span class="string">"bindDateChange"</span>&gt;</span><br><span class="line">        &lt;view <span class="class"><span class="keyword">class</span></span>=<span class="string">"weui-input"</span>&gt;&#123;&#123;date&#125;&#125;&lt;<span class="regexp">/view&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>picker&gt;</span><br><span class="line"><span class="number">3</span>、使用redux获取天气数据</span><br><span class="line"><span class="number">4</span>、图片选择及预览</span><br><span class="line">    <span class="keyword">async</span> chooseImage() &#123;</span><br><span class="line">        <span class="keyword">const</span> res = <span class="keyword">await</span> wepy.chooseImage(&#123;</span><br><span class="line">            sourceType: [<span class="string">'camera'</span>, <span class="string">'album'</span>],</span><br><span class="line">            sizeType: [<span class="string">'compressed'</span>, <span class="string">'original'</span>],</span><br><span class="line">            count: <span class="number">9</span></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.imageList = res.tempFilePaths;</span><br><span class="line">    &#125;,</span><br><span class="line">    previewImage(e) &#123;</span><br><span class="line">        <span class="keyword">const</span> current = e.target.dataset.src;</span><br><span class="line">        wx.previewImage(&#123;</span><br><span class="line">            current,</span><br><span class="line">            urls: <span class="keyword">this</span>.imageList</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="number">5</span>、提交数据（云存数、云函数、云数据库）</span><br><span class="line">    <span class="keyword">const</span> requsets = <span class="keyword">this</span>.imageList.map(<span class="function"><span class="params">tempFilePath</span> =&gt;</span> wepy.saveFile(&#123;tempFilePath&#125;)); <span class="comment">// 云存储</span></span><br><span class="line">    <span class="built_in">Promise</span>.all(requsets).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> imgs = u.pluck(res, <span class="string">'savedFilePath'</span>);</span><br><span class="line">        <span class="keyword">const</span> data = &#123;...&#125;;</span><br><span class="line">        wx.cloud.callFunction(&#123; <span class="comment">// 云函数</span></span><br><span class="line">            name: <span class="string">'addDiary'</span>,</span><br><span class="line">            data</span><br><span class="line">        &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.resetFormData());</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 云函数中的内容</span></span><br><span class="line">    cloud.init();</span><br><span class="line">    <span class="keyword">const</span> db = cloud.database();</span><br><span class="line">    exports.main = <span class="keyword">async</span> (event, context) =&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">await</span> db.collection(<span class="string">'diary'</span>).add(&#123;</span><br><span class="line">                data: &#123;<span class="comment">// data 字段表示需新增的 JSON 数据&#125;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            <span class="built_in">console</span>.error(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://636c-cloud-demo-1110d2-1257658184.tcb.qcloud.la/add.png?sign=31096efdc765e188dd51f3272a2d327e&amp;t=1539138862" alt="image"></p>
+<h5 id="6、查看日记（云函数云数据库及云存储）"><a href="#6、查看日记（云函数云数据库及云存储）" class="headerlink" title="6、查看日记（云函数云数据库及云存储）"></a>6、查看日记（云函数云数据库及云存储）</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、分页加载数据</span><br><span class="line">    onReachBottom() &#123; <span class="comment">// 拉到页面最低端触发，请求下一页数据</span></span><br><span class="line">        <span class="keyword">this</span>.curPage += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">this</span>.getDiaryList(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onPullDownRefresh() &#123; <span class="comment">// 拉到页面最上面触发，刷新数据</span></span><br><span class="line">        <span class="keyword">this</span>.curPage = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">this</span>.getDiaryList();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="number">2</span>、获取数据列表（通过云函数）</span><br><span class="line">    cloud.init();</span><br><span class="line">    <span class="keyword">const</span> db = cloud.database()</span><br><span class="line">    exports.main = <span class="keyword">async</span> (event, context) =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> skipNum = <span class="built_in">parseInt</span>((event.page - <span class="number">1</span>) * event.pageSize);</span><br><span class="line">        <span class="keyword">const</span> limitNum = <span class="built_in">parseInt</span>(event.pageSize);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> db.collection(<span class="string">'diary'</span>)</span><br><span class="line">            .where(&#123;</span><br><span class="line">                userid: event.userid</span><br><span class="line">            &#125;)</span><br><span class="line">            .skip(skipNum)</span><br><span class="line">            .limit(limitNum)</span><br><span class="line">            .get();</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="https://636c-cloud-demo-1110d2-1257658184.tcb.qcloud.la/diary1.png?sign=bb7a5d53fb94afc53c4c3787716b6c22&amp;t=1539079231/w/240" alt="image"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/wepy/" rel="tag">#wepy</a>
+          
+            <a href="/tags/微信小程序/" rel="tag">#微信小程序</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/阿里大于短信服务/" rel="next" title="短信服务">
+                <i class="fa fa-chevron-left"></i> 短信服务
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/10/10/基于wepy框架的微信小程序开发/"
+           data-title="基于wepy框架的微信小程序开发" data-url="http://yoursite.com/2018/10/10/基于wepy框架的微信小程序开发/">
+      </div>
+    
+  </div>
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/hsd.jpg"
+               alt="Leo_婷子酱" />
+          <p class="site-author-name" itemprop="name">Leo_婷子酱</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jttry" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#wepy-housekeeper"><span class="nav-number">1.</span> <span class="nav-text">wepy-housekeeper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、微信小程序原生语法"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">一、微信小程序原生语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、应用结构"><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">1、应用结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、循环列表"><span class="nav-number">1.0.0.1.2.</span> <span class="nav-text">2、循环列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、条件渲染"><span class="nav-number">1.0.0.1.3.</span> <span class="nav-text">3、条件渲染</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、事件"><span class="nav-number">1.0.0.1.4.</span> <span class="nav-text">4、事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、引用"><span class="nav-number">1.0.0.1.5.</span> <span class="nav-text">5、引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、数据绑定"><span class="nav-number">1.0.0.1.6.</span> <span class="nav-text">6、数据绑定</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、wepy框架简介"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">二、wepy框架简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、应用结构-1"><span class="nav-number">1.0.0.2.1.</span> <span class="nav-text">1、应用结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、app-wpy"><span class="nav-number">1.0.0.2.2.</span> <span class="nav-text">2、app.wpy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、page-wpy"><span class="nav-number">1.0.0.2.3.</span> <span class="nav-text">3、page.wpy</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、项目解析"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">三、项目解析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、微信运动"><span class="nav-number">1.0.0.3.1.</span> <span class="nav-text">1、微信运动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、定位及地理编码"><span class="nav-number">1.0.0.3.2.</span> <span class="nav-text">2、定位及地理编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、图片轮播"><span class="nav-number">1.0.0.3.3.</span> <span class="nav-text">3、图片轮播</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、天气、redux–组建间数据共享"><span class="nav-number">1.0.0.3.4.</span> <span class="nav-text">4、天气、redux–组建间数据共享</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、写日记（云函数云数据库及云存储）"><span class="nav-number">1.0.0.3.5.</span> <span class="nav-text">5、写日记（云函数云数据库及云存储）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、查看日记（云函数云数据库及云存储）"><span class="nav-number">1.0.0.3.6.</span> <span class="nav-text">6、查看日记（云函数云数据库及云存储）</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo_婷子酱</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jttry"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

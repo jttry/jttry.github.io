@@ -1,0 +1,887 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,在线编辑," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1 系统设计简介能够在线展示及编写html、js、css、php代码,拥有实时预览、代码高亮、自动完成、在线发布等多项特性,提供新建项目、文件上传、删除、下载及管理功能。网址：https://ccgis.cn/jsEditor/modules/logreg/login/login.html 功能设计系统分为以下三个功能模块，分别是项目管理模块、代码编辑及运行模块、工具栏，如下图所示。 2 关键技术">
+<meta name="keywords" content="javascript,在线编辑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsEditor在线代码编辑器">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/jsEditor在线编辑器/index.html">
+<meta property="og:site_name" content="暖色调">
+<meta property="og:description" content="1 系统设计简介能够在线展示及编写html、js、css、php代码,拥有实时预览、代码高亮、自动完成、在线发布等多项特性,提供新建项目、文件上传、删除、下载及管理功能。网址：https://ccgis.cn/jsEditor/modules/logreg/login/login.html 功能设计系统分为以下三个功能模块，分别是项目管理模块、代码编辑及运行模块、工具栏，如下图所示。 2 关键技术">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i4.piimg.com/567571/fece5e2519562fdb.jpg">
+<meta property="og:image" content="http://i4.piimg.com/567571/a41bedad664b974d.jpg">
+<meta property="og:image" content="http://i4.piimg.com/567571/cd76fbd7b73c6463.jpg">
+<meta property="og:updated_time" content="2018-10-10T03:24:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jsEditor在线代码编辑器">
+<meta name="twitter:description" content="1 系统设计简介能够在线展示及编写html、js、css、php代码,拥有实时预览、代码高亮、自动完成、在线发布等多项特性,提供新建项目、文件上传、删除、下载及管理功能。网址：https://ccgis.cn/jsEditor/modules/logreg/login/login.html 功能设计系统分为以下三个功能模块，分别是项目管理模块、代码编辑及运行模块、工具栏，如下图所示。 2 关键技术">
+<meta name="twitter:image" content="http://i4.piimg.com/567571/fece5e2519562fdb.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/jsEditor在线编辑器/"/>
+
+  <title> jsEditor在线代码编辑器 | 暖色调 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">暖色调</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Every little helps</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jsEditor在线代码编辑器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-10T11:24:32+08:00" content="2018-10-10">
+              2018-10-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/10/10/jsEditor在线编辑器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/10/jsEditor在线编辑器/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-系统设计"><a href="#1-系统设计" class="headerlink" title="1 系统设计"></a>1 系统设计</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>能够在线展示及编写html、js、css、php代码,拥有实时预览、代码高亮、自动完成、在线发布等多项特性,提供新建项目、文件上传、删除、下载及管理功能。<br>网址：<a href="https://ccgis.cn/jsEditor/modules/logreg/login/login.html" target="_blank" rel="noopener">https://ccgis.cn/jsEditor/modules/logreg/login/login.html</a><br><img src="http://i4.piimg.com/567571/fece5e2519562fdb.jpg" alt=""><br><img src="http://i4.piimg.com/567571/a41bedad664b974d.jpg" alt=""></p>
+<h2 id="功能设计"><a href="#功能设计" class="headerlink" title="功能设计"></a>功能设计</h2><p>系统分为以下三个功能模块，分别是项目管理模块、代码编辑及运行模块、工具栏，如下图所示。<br><img src="http://i4.piimg.com/567571/cd76fbd7b73c6463.jpg" alt=""></p>
+<h1 id="2-关键技术"><a href="#2-关键技术" class="headerlink" title="2 关键技术"></a>2 关键技术</h1><h2 id="2-1-目录树的生成"><a href="#2-1-目录树的生成" class="headerlink" title="2.1 目录树的生成"></a>2.1 目录树的生成</h2><p>根据用户的登录信息得到属于该用户的项目名称及项目文件所在路径，然后根据geoserver提供的fileserver接口，使用getdir方法得到每一个项目所拥有的文件路径。<br>若当前用户没有项目，就为其创建一个默认的项目，包含基本的文件结构：index.html文件、css文件夹、js文件夹、imgs文件夹和libs文件夹。<br>如果项目的数量特别大，需要多次的循环，为了防止长时间运行脚本，造成运行阻塞，用户无法与页面进行交互，需要对其使用数组分块技术，基本的思路是：使用定时器处理数组的一小部分，接着再设置另一个定时器，调用arguments.callee处理小一小块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> start = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> item = array.shift();</span><br><span class="line">        process(item);</span><br><span class="line">    &#125;<span class="keyword">while</span>(array.length &gt; <span class="number">0</span> &amp;&amp; (+<span class="keyword">new</span> <span class="built_in">Date</span>() - start &lt; <span class="number">50</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(array.length &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        setTimeout(<span class="built_in">arguments</span>.callee,<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+<p>将文件路径转换为节点的格式，每个节点包含id、pId、name、isParent等信息。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zNode = &#123; <span class="attr">id</span>:zNodeId, <span class="attr">pId</span>:parentId, <span class="attr">name</span>:dirArr[i],<span class="attr">isParent</span> :isParent, <span class="attr">open</span>:openFlag, <span class="attr">owner</span>:dirArr[<span class="number">0</span>] &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>最后将得到的节点信息绑定到所在的ztree元素的id上，并为其设定相应的点击事件、双击事件及右键点击事件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.fn.zTree.init($(<span class="string">"#"</span>+id), setting, zNodes);</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-2-编辑窗口与目录树关联"><a href="#2-2-编辑窗口与目录树关联" class="headerlink" title="2.2 编辑窗口与目录树关联"></a>2.2 编辑窗口与目录树关联</h2><p>点击目录树到编辑窗口打开文件，使用了自定义事件绑定方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">addCustomEvt: <span class="function"><span class="keyword">function</span> (<span class="params">evtName,callback</span>)</span>&#123; <span class="comment">//用于注册事件处理程序</span></span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>.events[evtName])&#123;</span><br><span class="line">        <span class="keyword">this</span>.events[evtName] = [callback];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.events[evtName].push(callback);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">trigger: <span class="function"><span class="keyword">function</span> (<span class="params">evtName,argsArr</span>)</span>&#123;        <span class="comment">//用于触发事件</span></span><br><span class="line">    <span class="keyword">var</span> callbackArr = <span class="keyword">this</span>.events[evtName];</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.length &gt;<span class="number">1</span> ? <span class="built_in">arguments</span>[<span class="number">1</span>]:[];</span><br><span class="line">    <span class="keyword">if</span>(callbackArr <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,len=callbackArr.length;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="keyword">var</span> fun = callbackArr[i];</span><br><span class="line">            fun.apply(<span class="literal">null</span>,args);</span><br><span class="line">        &#125;                </span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>这种观察者的设计模式，由观察者及主体构成。观察者能够订阅事件即注册回调事件，在主文件中注册打开文件的事件处理程序，openFile函数执行的就是在编辑窗口请求并打开指定的文件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cataMod.addCustomEvt(<span class="string">'open'</span>,openFile);</span><br></pre></td></tr></table></figure></p>
+<p>主体触发事件，在目录树的点击事件中，触发打开文件的事件。</p>
+<pre><code class="javascript">catalog.trigger(<span class="string">'open'</span>,args);  
+</code></pre>
+<p>打开指定文件使用的是geoserver服务器提供的fileserver接口，使用getfile方法得到当前路径的文件内容。请求文件时在请求的URL中加上时间戳参数，保证每次请求的文件都是从服务器上获取的最新文件，而不是从浏览器的缓存中读取的。最后在标签栏里添加文件名标签，并用CodeMirror提供的setValue()方法填充代码窗口。</p>
+<h2 id="2-3-项目管理"><a href="#2-3-项目管理" class="headerlink" title="2.3 项目管理"></a>2.3 项目管理</h2><h3 id="2-3-1-新建项目"><a href="#2-3-1-新建项目" class="headerlink" title="2.3.1 新建项目"></a>2.3.1 新建项目</h3><p>为项目添加默认目录结构，创建默认html文件，并包含基础的html结构，保存为字符串，使用encodeURIComponent()方法将字符串进行编码，作为URI的con参数，新建文件使用geoserver服务器fileserver接口的putstring方法。<br>创建默认的文件夹，使用fileserver接口mkdir方法新建css文件夹、js文件夹、imgs文件夹和libs文件夹。<br>最后利用WebsqlScript接口为用户在数据库中添加一条记录。</p>
+<h3 id="2-3-2-新建文件"><a href="#2-3-2-新建文件" class="headerlink" title="2.3.2 新建文件"></a>2.3.2 新建文件</h3><p>新建文件后需要在目录树中增加一个新的节点，使用zTree.addNodes(pNode,zNode)添加节点，zTree.expandNode(zNode)将节点展开，并用zTree.selectNode(thisZNode)将该节点设为选中状态。<br>在编辑窗口添加一个新的文件标签，并将不同类型文件的默认内容更新到<code>&lt;textarea&gt;</code><br>标签中。若新建的文件类型为js或css，则在对应的网页文档的<code>&lt;head&gt;</code>标签中插入<code>&lt;script&gt;</code>标签或<code>&lt;link&gt;</code>标签。</p>
+<h3 id="2-3-3-删除文件"><a href="#2-3-3-删除文件" class="headerlink" title="2.3.3 删除文件"></a>2.3.3 删除文件</h3><p>使用fileserver接口delete方法删除文件；利用ztree的removeNode()方法移除节点；然后判断当前文件是否在代码编辑窗口中打开，若打开则判断编辑窗口中可见的文件是否为要删除的文件，否的话直接删除文件的标签页和在对象中存储的信息，是的话则先判断当前标签页是否有下一个nodeType为1的同级节点元素并作为下一个要打开的文件，否则判断当前标签页是否有上一个nodeType为1的同级节点元素并作为下一个要打开的文件。</p>
+<h3 id="2-3-4-下载文件"><a href="#2-3-4-下载文件" class="headerlink" title="2.3.4 下载文件"></a>2.3.4 下载文件</h3><p>首先将要下载的文件或文件夹通过fileserver接口dozip方法另存为一个zip格式的压缩文件；创建一个不可见的<code>&lt;iframe&gt;</code>标签，将<code>&lt;iframe&gt;</code>标签的src指向另存文件的路径；最后将标签加到文档中document.body.appendChild(elemIF)。</p>
+<h3 id="2-4-压缩文件上传"><a href="#2-4-压缩文件上传" class="headerlink" title="2.4 压缩文件上传"></a>2.4 压缩文件上传</h3><p>为更好地满足用户的需要，我们利用 HTML5 提供的 File API 实现上传文件的功能。Javascript 通过 File API 提供的 File、FileList、Blob 接口便可以读取本地文件。在 html5 中， File 对象支持选择多个文件， 用户选择了某些文件之后，便会触发 file 类型的 input 元素的 onchange 事件句柄。File 对象中包含了文件 的所有可访问信息，而不仅仅是文件名。</p>
+<p>File API 还提供了一个异步读取文件的接口——FileReader，利用该接口我们可以异步地将文件内容 加载到内存中，赋予某个 js 变量。FileReader 包含了一套完整的事件模型，用于捕获读取文件时的状态 如 onabort (中断)、onerror (出错)、onloadstart (开始)、onprogress (正在读取)、onload (成功读取)等。 基于 FileReader，我们编写了用于多文件上传的 js 类库 gUpload.js，实现本地文件的读取、变量的处理、文件上传至服务器。</p>
+<p>上传文件后在目录树中添加新的节点 ；若在根目录下上传则在数据库中添加一条记录；若上传的文件为压缩文件，geoserver会自动将文件解压到同级目录下，因此还需则将同级目录下的同名文件转换为节点添加到目录树中。</p>
+<h2 id="2-5-运行结果实时显示"><a href="#2-5-运行结果实时显示" class="headerlink" title="2.5 运行结果实时显示"></a>2.5 运行结果实时显示</h2><p>代码编辑窗口使用了<code>&lt;textarea&gt;</code>标签，在使用CodeMirror.fromTextArea()方法初始化编辑器对象时传入该标签元素，并设置相应的参数。运行结果的显示使用的是<code>&lt;iframe&gt;</code>标签。<br>在代码编辑窗口编写完代码后，利用CodeMirror提供的getValue方法得到当前文件的内容，并保存到服务器中。再使用getMode方法判断当前文件类型，若非网页文档则找到当前文件对应的html文件的路径。最后将iframe的src属性指向html文件所在路径并加上随机数作为参数，就可以实现运行结果实时显示在页面中的效果。</p>
+<h1 id="3-存在的不足"><a href="#3-存在的不足" class="headerlink" title="3 存在的不足"></a>3 存在的不足</h1><h2 id="3-1-编辑同一个文件存在冲突"><a href="#3-1-编辑同一个文件存在冲突" class="headerlink" title="3.1 编辑同一个文件存在冲突"></a>3.1 编辑同一个文件存在冲突</h2><p>当进行协同开发时，多个用户可能同时编辑同一个文件，这时候就极有可能出现冲突，若某个用户修改了文档中的某一部分并对其进行保存，而这时候另一个用户修改了文档中的另一部分并保存，这时候前一个用户修改的内容就会被后一个用户所覆盖。因此之后要考虑在后台将提交的字符串与后台文件合并的功能。</p>
+<h2 id="3-2-没有错误提示"><a href="#3-2-没有错误提示" class="headerlink" title="3.2 没有错误提示"></a>3.2 没有错误提示</h2><p>目前查看错误只能通过打开浏览器的控制台的方式，这样不便于开发，接下来可以考虑将错误提示直接显示在系统中，更加方便用户进行开发。</p>
+<h1 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h1><h2 id="1）工具介绍"><a href="#1）工具介绍" class="headerlink" title="1）工具介绍"></a>1）工具介绍</h2><ul>
+<li>新建项目：输入项目名后，自动新建一个默认目录结构的项目。</li>
+<li>新建js：选择所在项目，输入文件名，即新建js文件。</li>
+<li>新建css：选择所在项目，输入文件名，即新建css文件。</li>
+<li>第三方库：点击选择需要引入的库，即自动在当前打开的html文件的head标签中插入第三方库的路径，再次点击可取消引入。</li>
+<li>保存：修改文件后，标签的图标会变为红点，点击保存后，文件保存到服务器，图标变为红色关闭按钮。</li>
+<li>运行：点击“运行”按钮后，可在右边看到运行后的结果。</li>
+<li>发布：点击“发布”按钮后，浏览器再打开一个标签页显示运行结果。</li>
+<li>帮助：点击“帮助”按钮后，查询帮助文档。</li>
+<li>类库文档：跳转到ccgis类库的说明文档。</li>
+<li>注销：在界面右上角显示用户名和注销按钮，点击注销按钮后，页面跳转到登录界面。</li>
+</ul>
+<h2 id="2）快捷键说明"><a href="#2）快捷键说明" class="headerlink" title="2）快捷键说明"></a>2）快捷键说明</h2><ul>
+<li>Ctrl+Q：自动补全</li>
+<li>Ctrl+F：查找全部匹配的结果</li>
+<li>Alt+F：逐个跳到匹配的结果，</li>
+<li>enter：跳到下一个匹配结果，</li>
+<li>shift+enter：找到上一个匹配的结果</li>
+<li>Ctrl+H：替换</li>
+<li>Ctrl+L：选中一行，可以删除</li>
+<li>Ctrl+/: 注释掉选中的区域</li>
+<li>Ctrl+D: 同时选中多个匹配结果</li>
+<li>Shift-Ctrl-[：折叠</li>
+<li>Shift-Ctrl-]：展开折叠区域</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/在线编辑/" rel="tag">#在线编辑</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/javascript的setter getter方法总结/" rel="next" title="javascript的setter getter方法总结">
+                <i class="fa fa-chevron-left"></i> javascript的setter getter方法总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/10/sublime-快捷键/" rel="prev" title="sublime-快捷键">
+                sublime-快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/10/10/jsEditor在线编辑器/"
+           data-title="jsEditor在线代码编辑器" data-url="http://yoursite.com/2018/10/10/jsEditor在线编辑器/">
+      </div>
+    
+  </div>
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/hsd.jpg"
+               alt="Leo_婷子酱" />
+          <p class="site-author-name" itemprop="name">Leo_婷子酱</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jttry" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-系统设计"><span class="nav-number">1.</span> <span class="nav-text">1 系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能设计"><span class="nav-number">1.2.</span> <span class="nav-text">功能设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-关键技术"><span class="nav-number">2.</span> <span class="nav-text">2 关键技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-目录树的生成"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 目录树的生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-编辑窗口与目录树关联"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 编辑窗口与目录树关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-项目管理"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 项目管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-新建项目"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-新建文件"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 新建文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-删除文件"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 删除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-下载文件"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 下载文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-压缩文件上传"><span class="nav-number">2.3.5.</span> <span class="nav-text">2.4 压缩文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-运行结果实时显示"><span class="nav-number">2.4.</span> <span class="nav-text">2.5 运行结果实时显示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-存在的不足"><span class="nav-number">3.</span> <span class="nav-text">3 存在的不足</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-编辑同一个文件存在冲突"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 编辑同一个文件存在冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-没有错误提示"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 没有错误提示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附："><span class="nav-number">4.</span> <span class="nav-text">附：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1）工具介绍"><span class="nav-number">4.1.</span> <span class="nav-text">1）工具介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2）快捷键说明"><span class="nav-number">4.2.</span> <span class="nav-text">2）快捷键说明</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo_婷子酱</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jttry"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
